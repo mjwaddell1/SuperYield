@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated && Session["UserAccountId"] != null)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <table>
+            <tr>
+                <td style="white-space:nowrap">
+                    @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", style = "text-decoration:none;color:steelblue;font-weight:700;font-family:HelNeueLight, Arial;font-size:large" })
+                    &nbsp;&nbsp;&nbsp;<a href="javascript:document.getElementById('logoutForm').submit()" style="text-decoration:none;color:steelblue;font-weight:700;font-family:HelNeueLight, Arial;font-size:large">Log off</a>
+                </td>
+            </tr>
+        </table>
+    }
+}
+else
+{
+    <table>
+        <tr>
+            <td style="white-space:nowrap">
+                @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", style = "text-decoration:none;color:steelblue;font-weight:700;font-family:HelNeueLight, Arial;font-size:large" })
+                &nbsp;&nbsp;&nbsp;@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", style = "text-decoration:none;color:steelblue;font-weight:700;font-family:HelNeueLight, Arial;font-size:large" })
+            </td>
+        </tr>
+    </table>
+}

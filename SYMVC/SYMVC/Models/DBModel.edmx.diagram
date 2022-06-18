@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="24b3dc4f4d294877b2f2b2954fdb86b6" Name="Diagram1" ZoomLevel="92">
+        <EntityTypeShape EntityType="YieldDBModel.AccountInvestment" Width="1.5" PointX="5.125" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="YieldDBModel.AccountTransaction" Width="1.5" PointX="7.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="YieldDBModel.ContactUs" Width="1.5" PointX="0.625" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="YieldDBModel.FAQ" Width="1.5" PointX="0.625" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YieldDBModel.Investment" Width="1.5" PointX="5.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="YieldDBModel.InvestmentHistory" Width="1.5" PointX="9.125" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="YieldDBModel.InvestmentType" Width="1.5" PointX="2.875" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YieldDBModel.PaymentMethod" Width="1.5" PointX="0.625" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="YieldDBModel.UserAccount" Width="1.5" PointX="2.875" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="YieldDBModel.UserMsg" Width="1.5" PointX="5.125" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountIn__Accou__73DA2C14" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountIn__Creat__75C27486" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountIn__Inves__74CE504D" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountIn__Updat__77AABCF8" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountTr__Accou__7A8729A3" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountTr__Creat__7F4BDEC0" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountTr__FromA__7B7B4DDC" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountTr__FromI__7C6F7215" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountTr__ToAcc__7D63964E" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountTr__ToInv__7E57BA87" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountTr__Updat__01342732" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__ContactUs__UserI__09C96D33" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__FAQ__CreateUser__6F1576F7" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__FAQ__UpdateUser__70FDBF69" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__Investmen__Creat__6A50C1DA" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__Investmen__Inves__041093DD" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__Investmen__Updat__6C390A4C" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__Investment__Type__68687968" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__Investmen__Creat__0504B816" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__Investmen__Updat__06ED0088" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__UserAccou__Payme__62AFA012" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__UserAccou__Creat__63A3C44B" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__UserAccou__Updat__658C0CBD" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__UserMsg__CreateU__0D99FE17" ManuallyRouted="false" />
+        <AssociationConnector Association="YieldDBModel.FK__UserMsg__UpdateU__0F824689" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="YieldDBModel.TransactionType" Width="1.5" PointX="10.375" PointY="6.75" />
+        <EntityTypeShape EntityType="YieldDBModel.AccountValue" Width="1.5" PointX="5.125" PointY="14.25" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountTra__Type__4B973090" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountVa__Accou__1E8F7FEF" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountVa__Creat__2077C861" />
+        <AssociationConnector Association="YieldDBModel.FK__AccountVa__Updat__226010D3" />
+        <EntityTypeShape EntityType="YieldDBModel.AccountStatus" Width="1.5" PointX="10.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

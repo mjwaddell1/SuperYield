@@ -1,0 +1,358 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.tbldata {
+    border: thin solid darkseagreen;
+    background-color: gainsboro;
+}
+
+    .tbldata thead {
+        background-color: skyblue;
+        border: 0;
+        margin: 0;
+        border-spacing: 0;
+    }
+
+    .tbldata tfoot {
+        background-color: antiquewhite !important;
+        border: 0;
+        border-top: thin solid darkgray !important;
+        margin: 0;
+        border-spacing: 0;
+    }
+
+    .tbldata td {
+        border: 0 !important;
+    }
+
+    .tbldata th {
+        border: 0 !important;
+    }
+
+.btn-greengrd {
+    color: ghostwhite;
+    background-image: linear-gradient(to bottom, green, mediumseagreen);
+    box-shadow: 3px 3px 2px grey;
+    border-width: 0;
+    border-radius: 20vw;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    padding-top: 0;
+    padding-bottom: 0;
+    cursor: pointer;
+}
+
+    .btn-greengrd:hover, .btn-greengrd:focus, .btn-greengrd:active, .btn-greengrd.active, .open > .dropdown-toggle.btn-greengrd {
+        color: ghostwhite;
+        background-image: linear-gradient(to bottom, lightseagreen, darkseagreen);
+        border-color: transparent;
+        text-decoration: none;
+    }
+
+.btn-bluegrd {
+    color: ghostwhite;
+    background-image: linear-gradient(to bottom, #23538a, cadetblue);
+    box-shadow: 3px 3px 2px grey;
+    border-width: 0;
+    border-radius: 20vw;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    padding-top: 0;
+    padding-bottom: 0;
+    cursor:pointer;
+}
+
+.btn-bluegrd:hover, .btn-bluegrd:focus, .btn-bluegrd:active, .btn-bluegrd.active, .open > .dropdown-toggle.btn-bluegrd {
+    color: ghostwhite;
+    background-image: linear-gradient(to bottom, #a7cfdf, cadetblue);
+    border-color: transparent;
+    text-decoration:none;
+}
+
+.btn-redgrd {
+    color: ghostwhite;
+    background-image: linear-gradient(to bottom, #d20202, #f62b2b);
+    box-shadow: 3px 3px 2px grey;
+    border-width: 0;
+    border-radius: 20vw;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-redgrd:hover, .btn-redgrd:focus, .btn-redgrd:active, .btn-redgrd.active, .open > .dropdown-toggle.btn-redgrd {
+    color: ghostwhite;
+    background-image: linear-gradient(to bottom, #f62b2b, #d20202);
+    background-color: #d20202;
+    border-color: transparent;
+    text-decoration: none;
+}
+
+
+.txtbox-custom {
+    height: 20px !important;
+    padding-top: 0;
+    padding-left: 3px;
+    background-color: ghostwhite;
+    vertical-align: middle;
+    border: 1px solid gray;
+}
+
+.divsectionclr {
+    padding-top: 100px !important;
+    padding-bottom: 120px !important;
+    /*background-image: linear-gradient(to bottom, ghostwhite, lightblue, ghostwhite);*/
+    border-top:solid skyblue 0;
+}
+
+.divsection {
+    padding-top: 100px !important;
+    padding-bottom: 120px !important;
+    /*background-color: #DAF8FB;*/
+    background-color:transparent;
+    background-image: url('../Content/bluearc.png');
+    background-size: 100% 100%;
+    border-top: solid skyblue 0;
+}
+
+
+
+
+@font-face {
+    font-family: 'HelNeueLight';
+    src: url('..//fonts//HelveticaNeueLight.ttf');
+}
+
+@font-face {
+    font-family: 'HelNeueBold';
+    src: url('..//fonts//HelveticaNeueBold.ttf');
+}
+
+@font-face {
+    font-family: 'HelNeueMed';
+    src: url('..//fonts//HelveticaNeue-Medium.otf');
+}
+
+@font-face {
+    font-family: 'OstrichHvy';
+    src: url('..//fonts//OstrichSans-Heavy.otf');
+}
+
+@font-face {
+    font-family: 'OstrichBld';
+    src: url('..//fonts//OstrichSans-Bold.otf');
+}
+
+@font-face {
+    font-family: 'QuickBld';
+    src: url('..//fonts//Quicksand-Bold.otf');
+}
+
+@font-face {
+    font-family: 'RaleBld';
+    src: url('..//fonts//Raleway-ExtraBold.ttf');
+}
+
+/* Default - Everything except Chrome & Safari */
+.shad {
+    box-shadow: 0px 0px 0px green;
+}
+
+.grdgrn {
+    background-color: skyblue;
+    background-image: none;
+    color: black;
+}
+
+.invtxt {
+    font-family: Arial;
+    font-weight: 700;
+    font-size: 1rem;
+    color: darkslategray;
+    text-shadow: 2px 2px 5px darkgray;
+    background-color: lightgray;
+    border: 1px solid slategray;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px
+}
+
+.invtxtsm {
+    font-family: Arial;
+    font-weight: 700;
+    font-size: 0.3rem;
+    color: darkslategray;
+    text-shadow: 2px 2px 5px darkgray;
+    background-color: lightgray;
+    border: 1px solid slategray;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px
+}
+
+/* Chrome & Safari */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .shad {
+        box-shadow: 5px 5px 2px grey;
+    }
+
+    .grdgrn {
+        /*background-color: #3E3F40;*/
+        color: black;
+        /*background-image: linear-gradient(darkslategrey, #5CA27100);*/
+        background-image: linear-gradient(cornflowerblue, lightblue);
+    }
+
+    .invtxt {
+        font-family: Arial;
+        font-weight: 700;
+        font-size: 0.1rem;
+        color: darkslategray;
+        text-shadow: 2px 2px 2px darkgray;
+        background-image: radial-gradient(#eeeeeeff, #eeeeeeff, #eeeeee33);
+        background-color: transparent;
+        border: 1px solid slategray;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 10px
+    }
+
+    .invtxtsm {
+        font-family: Arial;
+        font-weight: 700;
+        font-size: 2rem;
+        color: darkslategray;
+        text-shadow: 2px 2px 2px darkgray;
+        background-image: radial-gradient(#eeeeeeff, #eeeeeeff, #eeeeee33);
+        background-color: transparent;
+        border: 1px solid slategray;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 10px
+    }
+}
+
+@media screen and (max-width:600px) {
+    .scrsmall {
+        display: block !important;
+    }
+
+    .scrmedium {
+        display: none !important;
+    }
+
+    .scrlarge {
+        display: none !important;
+    }
+
+    .divsection {
+        background-image: url('../Content/bluearccrop.png');
+    }
+}
+
+@media screen and (max-width:1200px) and (min-width: 601px) {
+    .scrsmall {
+        display: none !important;
+    }
+
+    .scrmedium {
+        display: block !important;
+    }
+
+    .scrlarge {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .scrsmall {
+        display: none !important;
+    }
+
+    .scrmedium {
+        display: none !important;
+    }
+
+    .scrlarge {
+        display: block !important;
+    }
+}
+
+
+/*screen and (max-width: 900px) and (min-width: 600px)*/
+
+
+
+
+@media (min-width:801px) {
+    .smallscrBS {
+        display: none !important;
+    }
+
+    .largescrBS {
+        display: block !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .smallscrBS {
+        display: block !important;
+    }
+
+    .largescrBS {
+        display: none !important;
+    }
+}
+
+@media (min-width:701px) {
+    .smallscr {
+        display: none !important;
+    }
+
+    .largescr {
+        display: block !important;
+    }
+}
+
+@media (max-width: 700px) {
+    .smallscr {
+        display: block !important;
+    }
+
+    .largescr {
+        display: none !important;
+    }
+}

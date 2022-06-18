@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SYMVC.Models.FAQ>
+
+@{
+    ViewBag.Title = "FAQ";
+}
+
+<div style="margin-left:3vw;margin-right:3vw">
+    <h2>Frequently Asked Questions</h2>
+
+    @if (Util.UserIsAdmin(Session))
+    {
+        <p>
+            @Html.ActionLink("Add New", "Create", "FAQ", null, new { @class = "btn-bluegrd", style = "height:22px;padding-top:0px" }) <br />
+        </p>
+    }
+        <table class="table table-striped tbldata">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Question)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Answer)
+                    </th>
+                    @if (Util.UserIsAdmin(Session))
+                    {
+                        <th></th>}
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="padding-right:20px">
+                        @Html.DisplayFor(modelItem => item.Question)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Answer)
+                    </td>
+                    @if (Util.UserIsAdmin(Session))
+                    {
+                        <td align="center">
+                            @Html.ActionLink("Edit", "Edit", "FAQ", new { id = item.Id }, new { @class = "btn-bluegrd", style = "height:22px;padding-top:0px;margin-bottom:1px" }) <br />
+                            @Html.ActionLink("Delete", "Delete", "FAQ", new { id = item.Id }, new { @class = "btn-redgrd", style = "height:22px;padding-top:0px" })
+                        </td>
+}
+                </tr>}
+
+        </table>
+</div>

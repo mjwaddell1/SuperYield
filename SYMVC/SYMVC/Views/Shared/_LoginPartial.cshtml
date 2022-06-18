@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated && Session["UserAccountId"] != null)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right" style="color:forestgreen">
+        <li>
+            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", style = "color:forestgreen;font-weight:700;font-family:HelNeueLight;font-size:medium" })
+        </li>
+        <li><button type="submit" class="btn-bluegrd" style="margin-top:13px;margin-bottom:10px;margin-left:10px;margin-right:10px">Log off</button></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><button class="btn-bluegrd" style="margin-top:12px;margin-left:10px" onclick="window.location.href='/Account/Register'">Register</button></li>
+        <li><button class="btn-bluegrd" style="margin-top:12px;margin-left:10px;margin-bottom:10px;margin-right:10px" onclick="window.location.href='/Account/Login'">Log in</button></li>
+    </ul>
+}

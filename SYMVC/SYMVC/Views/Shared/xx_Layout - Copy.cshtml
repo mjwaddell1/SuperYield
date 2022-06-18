@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Super Yield</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .dropdown-toggle:active, .open .dropdown-toggle {
+            background-color:whitesmoke;
+            color: lightgreen;
+        }
+        .nav-pills .open .dropdown-toggle, .nav > .open.active > a:hover {
+            background-color: lightgreen;
+            border-color: transparent;
+        }
+    </style>
+
+</head>
+<body style="background-color:aliceblue">
+    <style>
+        ul.nav li a, ul.nav li a:visited {
+            color: dodgerblue !important;
+        }
+
+            ul.nav li a:hover, ul.nav li a:active {
+                color: royalblue !important;
+            }
+
+        ul.nav li.active a {
+            color: dodgerblue !important;
+        }
+        .panel-heading {
+            background-color: red;
+            color: red;
+        }
+
+        .hvrgray:hover {
+            background-color: lightgray !important;
+        }
+
+        .mwgt {
+            font-family:Verdana;
+            font-weight: 700 !important;
+        }
+
+        .panel-body {
+            background-color: blue;
+            color: red;
+        }
+
+    </style>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:whitesmoke;border-bottom-color:lightgray">
+        <div class="container" style="padding:0px;margin-left:0;margin-right:10px">
+
+            <div class="navbar-header" style="vertical-align:bottom;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar" style="background-color:royalblue"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" style="color:royalblue;width:100vw">
+                <center>
+                    <table style="width:95%;max-width:1100px">
+                        <tr>
+                            <td><a href="@Url.Action("Index", "Home")" title="Home"><img src="../../Content/SYLogoTreeSmall.png" style="width:40px;margin-top:10px;" /></a></td>
+                            <td>
+                                <ul class="nav navbar-nav">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle mwgt" data-toggle="dropdown" style="background-color:transparent;font-family:HelNeueLight, Arial;font-size:large;"><span style="color:#0BA0C6 !important">SUPER</span><span style="color:#649419 !important">YIELD</span> &blacktriangledown;</a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "hvrgray mwgt" })</li>
+                                            <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "hvrgray mwgt" })</li>
+                                            <li>@Html.ActionLink("Investments", "Index", "Investment", null, new { @class = "hvrgray mwgt" })</li>
+                                            @if (Util.UserIsAdmin(Session))
+                                            {
+                                                <li>@Html.ActionLink("Contact Us", "Index", "ContactUs", null, new { @class = "hvrgray mwgt" })</li>}
+                                            else
+                                            {
+                                                <li>@Html.ActionLink("Contact Us", "Create", "ContactUs", null, new { @class = "hvrgray mwgt" })</li>}
+                                            <li>@Html.ActionLink("FAQ", "Index", "FAQ", null, new { @class = "a hvrgray mwgt" })</li>
+                                        </ul>
+                                    </li>
+                                    @if (Util.UserLoggedIn(Session))
+                                    {
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle mwgt" data-toggle="dropdown" style="background-color:transparent;color:forestgreen;font-family:HelNeueLight, Arial;font-size:large">Account &blacktriangledown;</a>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Dashboard", "Index", "Dashboard", null, new { @class = "hvrgray mwgt" })</li>
+                                                <li>@Html.ActionLink("Buy & Sell", "Index", "BuySell", null, new { @class = "hvrgray mwgt" })</li>
+                                                <li>@Html.ActionLink("Tx History", "Index", "Transaction", null, new { @class = "hvrgray mwgt" })</li>
+                                                <li>@Html.ActionLink("Funding", "FundingInfo", "UserAccount", null, new { @class = "hvrgray mwgt" })</li>
+                                                <li>@Html.ActionLink("Settings", (Session["UserAccountId"] == null || Session["UserAccountId"].ToString() == "0") ? "Create" : "Edit", "UserAccount", null, new { @class = "hvrgray mwgt" })</li>
+                                            </ul>
+                                        </li>}
+                                    @if (Util.UserIsAdmin(Session))
+                                    {
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle mwgt" data-toggle="dropdown" style="background-color:transparent;color:forestgreen;font-family:HelNeueLight, Arial;font-size:large">Admin &blacktriangledown;</a>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("User List", "UserList", "Admin", null, new { @class = "hvrgray mwgt" })</li>
+                                                <li>@Html.ActionLink("All Tx", "AllTransactions", "Admin", null, new { @class = "hvrgray mwgt" })</li>
+                                                <li>@Html.ActionLink("Log File", "GetLogFile", "Admin", null, new { @class = "hvrgray mwgt" })</li>
+                                            </ul>
+                                        </li>}
+
+                                </ul>
+                            </td>
+                            <td align="right">
+
+                                <table style="height:40px;max-width:700px;"><tr><td style="padding-top:5px;">@Html.Partial("_LoginPartial")</td></tr></table>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </div>
+
+        </div>
+    </div>
+    <div class="container-fluid" style="width:100%;">
+        @if (Session["ErrMsg"] != null)
+        {
+            <div style="background-color:orangered;padding:5px 5px 5px 20px" id="divErrMsg">@Session["ErrMsg"].ToString()</div>
+            @(Session["ErrMsg"] = null)
+        }
+
+        @if (Session["UserMsg"] != null)
+        {
+            <div style="background-color:lightgreen;padding:5px 5px 5px 20px" id="divUserMsg">@Session["UserMsg"].ToString()</div>
+            @(Session["UserMsg"] = null)
+        }
+
+        <center>
+            <div style="max-width:1300px;">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <center>
+                        <table style="width:90%;max-width:1100px;margin-left:0" cellpadding="5">
+                            <tr>
+                                <td align="left" valign="middle"><span style="color:gray;">&copy; @DateTime.Now.Year - Super Yield</span></td>
+                                <td align="right" valign="middle"><img src="../../Content/SYLogoTreeFull.png" style="width:120px;" /></td>
+                            </tr>
+                        </table>
+                    </center>
+                </footer>
+            </div>
+        </center>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <style type="text/css">
+        .dropdown-toggle:active, .open .dropdown-toggle {
+            background: blue;
+            color: lightgreen;
+        }
+        .nav-pills .open .dropdown-toggle, .nav > .open.active > a:hover {
+            background-color: #222;
+            border-color: #333;
+        }
+    </style>
+
+</body>
+</html>

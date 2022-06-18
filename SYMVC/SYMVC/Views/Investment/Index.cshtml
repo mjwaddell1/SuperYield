@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SYMVC.Models.Investment>
+
+@{
+    ViewBag.Title = "Investments";
+}
+
+<div style="margin-left:3vw;margin-right:3vw">
+    <h2>Super Yield Investments</h2>
+
+    @if (Util.UserIsAdmin(Session))
+    {
+        <p>
+            @Html.ActionLink("Add New", "Create", "Investment", null, new { @class = "btn-bluegrd" }) <br />
+        </p>
+    }
+        <table class="table table-striped tbldata" style="width:100%;">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IRR)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InceptionDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LockPeriodDays)
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    @if (Util.UserIsAdmin(Session))
+                    {
+                        <th></th>}
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                if (item.Type == 1) { continue; }
+                <tr style="margin:0px;border:0;border-spacing:0">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IRR)
+                    </td>
+                    <td>
+                        @(item.InceptionDate == null ? "" : item.InceptionDate.Value.ToString("yyyy-M-d"))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LockPeriodDays)
+                    </td>
+                    <td>
+                        @Util.GetInvStatusString(item.Status.Value)
+                    </td>
+                    @if (Util.UserIsAdmin(Session))
+                    {
+                        SYMVC.Models.DbCtxt db = SYMVC.Models.DbCtxt.Create();
+                        <td align="center">
+                            @Html.ActionLink("Edit", "Edit", "Investment", new { id = item.Id }, new { @class = "btn-bluegrd", style = "height:22px;padding-top:0px;margin-bottom:1px" })
+                            @if (db.AccountInvestmentSet.Where(i => i.InvestmentId == item.Id).FirstOrDefault() == null)
+                            { <br />@Html.ActionLink("Delete", "Delete", "Investment", new { id = item.Id }, new { @class = "btn-redgrd" })}
+                        </td>
+}
+                </tr>}
+
+        </table>
+</div>

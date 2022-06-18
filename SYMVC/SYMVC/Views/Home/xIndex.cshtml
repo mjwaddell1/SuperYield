@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<br />
+
+<div style=" background-image: url('../../Content/Slides/Sunflowers18x12.jpg');background-size:cover; background-repeat:no-repeat;width:100%;text-align:center;" id="div1">
+    <table style="width:100%;">
+        <tr>
+            <td>
+                <table style="width:100%;">
+                    <tr><td style="width:5%"></td><td style="width:35%;font-size:25px;"><br /><br /><span>When you invest, you are buying a day that you don’t have to work.</span><br /></td><td style="width:60%"></td></tr>
+                    <tr><td></td><td style="font-size:20px;text-align:right;padding-right:20px"><span>- Aya Laraya</span></td><td></td></tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <br /><br />
+                            <input type="button" class="btn btn-info" style="font-size:large" value="Start Now" onclick="location.href='@Url.Action("Register", "Account", routeValues: null)'" />
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr style="height:500px"><td></td><td><br /></td><td></td></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+<div style="background-image: url('../../Content/Slides/TeddyBear18x12.jpg');background-size: cover;background-repeat: no-repeat;width: 100%;text-align: center;display:none;" id="div2">
+    <table style="width:100%;">
+        <tr>
+            <td>
+                <table style="width:100%;">
+                    <tr><td style="width:5%"></td><td style="width:35%;font-size:25px;"><br /><br /><span style="color:bisque">I made my first investment at age eleven. I was wasting my life until then.</span><br /></td><td style="width:60%"></td></tr>
+                    <tr><td></td><td style="font-size:20px;text-align:right;padding-right:20px"><span style="color:bisque">- Warren Buffet</span></td><td></td></tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <br /><br />
+                            <input type="button" class="btn btn-info" style="font-size:large" value="Start Now" onclick="location.href='@Url.Action("Register", "Account", routeValues: null)'" />
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr style="height:500px"><td></td><td><br /></td><td></td></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+<div style="background-image: url('../../Content/Slides/Vineyard18x12.jpg');background-size: cover;background-repeat: no-repeat;width: 100%;text-align: center;display:none;" id="div3">
+    <table style="width:100%;">
+        <tr>
+            <td>
+                <table style="width:100%;">
+                    <tr><td style="width:45%"></td><td style="width:35%;font-size:25px;"><br /><br /><span>Investing puts money to work. The only reason to save money is to invest it.</span><br /></td><td style="width:20%"></td></tr>
+                    <tr><td></td><td style="font-size:20px;text-align:right;padding-right:20px"><span>- Grant Cardone</span></td><td></td></tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <br /><br />
+                            <input type="button" class="btn btn-info" style="font-size:large" value="Start Now" onclick="location.href='@Url.Action("Register", "Account", routeValues: null)'" />
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr style="height:500px"><td></td><td><br /></td><td></td></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+<script>
+    var ctr = 2;
+    setInterval(function () {
+        for (x = 1; x < 4; x++)
+            document.getElementById("div" + x).style.display = "none";
+        document.getElementById("div" + (ctr++)).style.display = "block"
+        if (ctr == 4) ctr = 1;
+    }, 10000);
+</script>
+<br /><br />
+<div>
+    <table style="width:100%;" cellspacing="5px">
+        <tr><td colspan="7" style="text-align:center;font-size:xx-large">INVESTMENT OPPORTUNITIES<br /><br /></td></tr>
+        <tr>
+            <td></td>
+            <td style="text-align:center;background-color:darkseagreen">Pre-Settlement</td>
+            <td></td>
+            <td style="text-align:center;background-color:darkseagreen">Moon Condos</td>
+            <td></td>
+            <td style="text-align:center;background-color:darkseagreen">Aqua Basements</td>
+        </tr>
+        <tr>
+            <td style="width:6%" />
+            <td style="width:25%;padding:0px;margin:0px"><img src="http://localhost:11847/Content/stockvault-gavel137270-8x6.jpg" style="width:100%" /></td>
+            <td style="width:6%" />
+            <td style="width:25%;padding:0px;margin:0px"><img src="http://localhost:11847/Content/stockvault-moon143244-8x6.jpg" style="width:100%" /></td>
+            <td style="width:6%" />
+            <td style="width:25%;padding:0px;margin:0px"><img src="http://localhost:11847/Content/stockvault-boats151143-8x6.jpg" style="width:100%" /></td>
+            <td style="width:6%" />
+        </tr>
+        <tr>
+            <td></td>
+            <td style="text-align:center;background-color:aliceblue">Pre-settlement funding<br />13% IRR<br />500 Day Holding<br />Open</td>
+            <td></td>
+            <td style="text-align:center;background-color:aliceblue">Building condos on the moon<br />10% IRR<br />450 Day Holding<br />Open</td>
+            <td></td>
+            <td style="text-align:center;background-color:aliceblue">Specializing in house boat basements<br />11% IRR<br />100 Day Holding<br />Open</td>
+        </tr>
+        <tr><td colspan="7">&nbsp;</td></tr>
+        <tr><td colspan="7">&nbsp;</td></tr>
+        <tr>
+            <td></td>
+            <td style="text-align:center;background-color:darkseagreen">Bank Failures</td>
+            <td></td>
+            <td style="text-align:center;background-color:darkseagreen">Mob Protection</td>
+            <td></td>
+            <td style="text-align:center;background-color:darkseagreen">Piracy</td>
+        </tr>
+        <tr>
+            <td style="width:6%" />
+            <td style="width:25%;padding:0px;margin:0px"><img src="http://localhost:11847/Content/stockvault-piggy-bank117574-8x6.jpg" style="width:100%" /></td>
+            <td style="width:6%" />
+            <td style="width:25%;padding:0px;margin:0px"><img src="http://localhost:11847/Content/stockvault-a-bullet127847-8x6.jpg" style="width:100%;" /></td>
+            <td style="width:6%" />
+            <td style="width:25%;padding:0px;margin:0px"><img src="http://localhost:11847/Content/stockvault-jolly-roger-grunge-flag134608-8x6.jpg" style="width:100%" /></td>
+            <td style="width:6%" />
+        </tr>
+        <tr>
+            <td></td>
+            <td style="text-align:center;background-color:aliceblue">Buy failing bank stock and wait for a government bailout<br />14% IRR<br />50 Day Holding<br />Open</td>
+            <td></td>
+            <td style="text-align:center;background-color:aliceblue">Mob protection in major US cities<br />15% IRR<br />100 Day Holding<br />Open</td>
+            <td></td>
+            <td style="text-align:center;background-color:aliceblue">Financing Somalia pirates in exchange for a portion of the booty<br />11% IRR<br />225 Day Holding<br />Open</td>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <table style="width:100%;" cellspacing="5px">
+        <tr><td colspan="3" style="text-align:center;font-size:xx-large">HOW IT WORKS<br /></td></tr>
+        <tr><td style="width:10%"></td><td>Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people’s hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.</td><td style="width:10%"></td></tr>
+    </table>
+    <br />
+    <br />
+    <table style="width:100%;" cellspacing="5px">
+        <tr><td colspan="3" style="text-align:center;font-size:xx-large">WHY CHOOSE SUPER YIELD<br /></td></tr>
+        <tr><td style="width:10%"></td><td>I scarcely know where to begin, though I sometimes facetiously place the cause of it all to Charley Furuseth’s credit.  He kept a summer cottage in Mill Valley, under the shadow of Mount Tamalpais, and never occupied it except when he loafed through the winter months and read Nietzsche and Schopenhauer to rest his brain.  When summer came on, he elected to sweat out a hot and dusty existence in the city and to toil incessantly.  Had it not been my custom to run up to see him every Saturday afternoon and to stop over till Monday morning, this particular January Monday morning would not have found me afloat on San Francisco Bay.</td><td style="width:10%"></td></tr>
+    </table>
+    <br />
+    <center>
+        <input type="button" class="btn btn-info" style="font-size:large" value="Start Now" onclick="location.href='@Url.Action("Register", "Account", routeValues: null)'" />
+    </center>
+
+</div>
+

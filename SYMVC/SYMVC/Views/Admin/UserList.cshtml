@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SYMVC.Models.UserAccount>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<div style="margin-left:3vw;margin-right:3vw">
+    <h2>Super Yield Users</h2>
+
+    <table class="table table-striped tbldata">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone2)
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>Type</th>
+                <th>U / I</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @if (item.StatusName == "Locked")
+                    {<span style="color:red">@Html.DisplayFor(modelItem => item.StatusName)</span>}
+                    else
+                    {<span style="color:green">@Html.DisplayFor(modelItem => item.StatusName)</span>}
+                </td>
+                <td>@((Util.AccountType)item.Type)</td>
+                @if (item.Type != (int)Util.AccountType.Admin)
+                    { <td>@Html.ActionLink("↔", "ToggleInstitutional", "Admin", new { acctId = item.Id }, new { @class = "btn-bluegrd", style = "height:22px;padding-top:0px" })</td> }
+                else
+                    { <td></td> }
+                <td>
+                    @Html.ActionLink("Investments", "UserInvestments", "Admin", new { acctId = item.Id }, new { @class = "btn-bluegrd", style = "height:22px;padding-top:0px" })
+                </td>
+                <td>
+                    @Html.ActionLink((item.Status == 1 ? "Lock" : "Unlock") + " Account", "LockAccount", "Admin", new { acctId = item.Id }, new { @class = "btn-redgrd", style = "height:22px" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

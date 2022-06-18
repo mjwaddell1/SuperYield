@@ -1,0 +1,521 @@
+﻿@model Tuple<List<SYMVC.ViewModels.AccountInvestmentVO>, List<SYMVC.ViewModels.AccountInvestmentVO>>
+
+@{
+    ViewBag.Title = "Buy and Sell Investments";
+}
+
+<style>
+    .ui-dialog > .ui-widget-header {
+        background: mediumseagreen;
+    }
+    .ui-dialog-titlebar-close {
+        visibility: hidden;
+    }
+</style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<div class="largescrBS" style="margin-left:3vw; margin-right:3vw;">
+    <h2>Buy and Sell Investments</h2>
+    <br />
+    <h3>Your Investments</h3>
+
+    <table class="table table-striped tbldata">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().Inv.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().Inv.IRR)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().AccInv.BuyDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().AccInv.LockStartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().BuyVal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().PctChg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().CurVal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().AccInv.ForSale)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().AccInv.Discount)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Item1)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inv.Title)
+                </td>
+                <td nowrap>
+                    @(item.Inv.IRR.Value.ToString("F2") + " %")
+                </td>
+                <td nowrap>
+                    @item.AccInv.BuyDate.Value.ToString("yyyy-M-d")
+                </td>
+                <td nowrap>
+                    @(item.AccInv.LockStartDate.HasValue ? item.AccInv.LockStartDate.Value.ToString("yyyy-M-d") : "")
+                </td>
+                <td nowrap>
+                    @item.BuyVal.ToString("C2")
+                </td>
+                <td nowrap>
+                    @item.PctChg.ToString("P")
+                </td>
+                <td nowrap>
+                    @item.CurVal.ToString("C2")
+                </td>
+                <td>
+                    @if (item.AccInv.ForSale.Value)
+                    { <text>For Sale</text> }
+                </td>
+                <td>
+                    @if (item.AccInv.ForSale.Value)
+                    { @((item.AccInv.Discount.Value / 100m).ToString("P"));
+                    }
+                </td>
+
+
+                @if (item.Inv.Type.Value > 1)
+                {
+                    if (!item.AccInv.ForSale.Value)
+                    {
+                        <td valign="middle">
+                             <a class="btn-bluegrd" style = "white-space:nowrap" onclick="toggleTR(1, @item.AccInv.Id)" id="@("btnSellLG" + item.AccInv.Id)">Sell ▼</a>
+                        </td>
+                    }
+                    else  //already for sale
+                    {
+                        <td>
+                            @Html.ActionLink("Cancel Sale", "Cancel", "BuySell", new { id = item.AccInv.Id }, new { @class = "btn-redgrd", style = "white-space:nowrap" })
+                        </td>
+                    }
+                }
+                else
+                {
+                    <td />}
+            </tr>
+            <tr style="display:none"> <td colspan="10">zzzz</td></tr>
+
+            <tr style="display:none" id="@("trSellLG"+@item.AccInv.Id)">
+
+                @if (!item.AccInv.ForSale.Value)
+                {
+                    <td valign="middle" colspan="10" align="right" style="padding-right:5vw">
+                        @if (item.Inv.Type.Value > 1)
+                        {
+                            using (Html.BeginForm("Sell", "BuySell", new { id = item.AccInv.Id, prfx = "LG" }, FormMethod.Post, new { id="frmLG" + item.AccInv.Id } ))
+                            {
+                                <table style="border:0;border-collapse:collapse;padding:0px;margin:0px">
+                                    <tr>
+                                        <td style="border:0;border-collapse:collapse;padding:0px;padding-left:10px;margin:0px" nowrap>Sell Amt ($): </td>
+                                        <td style="border:0;border-collapse:collapse;padding:0px;padding-left:10px;margin:0px">@Html.TextBox("txtSellAmtLG" + item.AccInv.Id, item.CurVal.ToString("0.##"), new { @class = "txtbox-custom", style = "width:80px;" })</td>
+                                        <td style="border:0;border-collapse:collapse;padding:0px;padding-left:10px;margin:0px" nowrap>Discount (%): </td>
+                                        @if (!Util.UserIsInstitutional(Session))
+                                           { <td style="border:0;border-collapse:collapse;padding:0px;padding-left:10px;margin:0px">@Html.TextBox("txtDiscountLG" + item.AccInv.Id, 0, new { @class = "txtbox-custom", style = "width:30px;" })</td> }
+                                        else
+                                           { <td style="padding:0px;padding-left:5px;padding-right:5px;margin:0px;background-color:antiquewhite;border:solid black 1px">50% PM</td> }
+                                        <td style="border:0;border-collapse:collapse;padding:0px;padding-left:10px;margin:0px"><a class="btn-greengrd" style="margin-left:20px;" onclick="document.getElementById('frmLG' + '@item.AccInv.Id').submit();return false;">Sell</a></td>
+                                        <td style="border:0;border-collapse:collapse;padding:0px;padding-left:5px;margin:0px"><a class="btn-bluegrd" style="margin-left:10px;" onclick="toggleTR(0, @item.AccInv.Id);return false;">Close ▲</a></td>
+                                    </tr>
+                                </table>
+                            }
+                        }
+                    </td>
+                }
+            </tr>
+        }
+
+        @if (Model != null && Model.Item1.Count() == 0)
+        {
+            <tr><td colspan="10">You have no investments</td></tr>
+        }
+
+    </table>
+
+    <br />
+
+    <h3>Investments For Purchase</h3>
+
+    <table class="table table-striped tbldata">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().Inv.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().Inv.IRR)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().AccInv.BuyDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().AccInv.LockStartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().BuyVal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().PctChg)
+                </th>
+                <th>
+                    Value (Cost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().AccInv.Discount)
+                </th>
+                <th>Buy Amt</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Item2)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inv.Title)
+                </td>
+                <td>
+                    @(item.Inv.IRR.Value.ToString("F2") + " %")
+                </td>
+                <td>
+                    @item.AccInv.BuyDate.Value.ToString("yyyy-M-d")
+                </td>
+                <td>
+                    @(item.AccInv.LockStartDate.HasValue ? item.AccInv.LockStartDate.Value.ToString("yyyy-M-d") : "")
+                </td>
+                <td>
+                    @item.BuyVal.ToString("C2")
+                </td>
+                <td>
+                    @item.PctChg.ToString("P")
+                </td>
+                <td>
+                    @if (item.AccInv.Discount == 0)
+                    { @item.CurVal.ToString("C2") }
+                    else
+                    { @(string.Concat(@item.CurVal.ToString("C2"), " (", (item.CurVal * (100 - item.AccInv.Discount.Value) / 100m).ToString("C2"), ")"));
+                    }
+                </td>
+                <td>
+                    @if (item.AccInv.ForSale.Value)
+                    {
+                        if (item.AccInv.Discount > 0)
+                        { @(string.Concat((item.AccInv.Discount.Value / 100m).ToString("P"), " (", (item.CurVal * (item.AccInv.Discount.Value) / 100m).ToString("C2"), ")"));
+                        }
+                        else
+                        { @((item.AccInv.Discount.Value / 100m).ToString("P"));
+                        }
+                    }
+                </td>
+                <td valign="middle" nowrap>
+                    @using (Html.BeginForm("Buy", "BuySell", new { id = item.AccInv.Id, prfx = "LG" }, FormMethod.Post, new { id = "frmLGBY" + item.AccInv.Id }))
+                    {
+                        @Html.TextBox("txtBuyAmtLG" + item.AccInv.Id, null, new { @class = "txtbox-custom", style = "width:60px;" })
+                        <a class="btn-bluegrd" style="margin-left:20px;" onclick="ConfirmBuy('frmLGBY' + '@item.AccInv.Id', 'txtBuyAmtLG' + '@item.AccInv.Id', @item.BuyLimit);return false;">Buy</a>
+                        <!--<a class="btn-bluegrd" style="margin-left:20px;" onclick="document.getElementById('frmLGBY' + '@item.AccInv.Id').submit();return false;">Buy</a>-->
+}
+                </td>
+            </tr>
+        }
+
+        @if (Model != null && Model.Item2.Count() == 0)
+        {
+            <tr><td colspan="10">There are no investments available for purchase</td></tr>
+        }
+
+    </table>
+</div>
+
+
+
+
+
+
+
+
+<div class="smallscrBS" style="margin-left:3vw; margin-right:3vw;">
+    <h2>Buy and Sell Investments</h2>
+    <br />
+    <h3>Your Investments</h3>
+
+    <table class="table table-striped tbldata">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().Inv.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().AccInv.BuyDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().CurVal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().AccInv.ForSale)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Item1)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inv.Title)
+                </td>
+                <td nowrap>
+                    @item.AccInv.BuyDate.Value.ToString("yyyy-M-d")
+                </td>
+                <td nowrap>
+                    @item.CurVal.ToString("C2")
+                </td>
+                <td>
+                    @if (item.AccInv.ForSale.Value)
+                    { <text>For Sale<br /></text> @((item.AccInv.Discount.Value / 100m).ToString("P"))}
+                </td>
+
+
+                @if (item.Inv.Type.Value > 1)
+                {
+                    if (!item.AccInv.ForSale.Value)
+                    {
+                        <td valign="middle">
+                            <button class="btn-bluegrd" style="height:20px;padding-top:0px;line-height:0;margin-left:20px;vertical-align:middle;white-space: normal;white-space:nowrap" onclick="toggleTR(1, @item.AccInv.Id)" id="@("btnSellSM" + item.AccInv.Id)">Sell ▼</button>
+                        </td>
+}
+                    else  //already for sale
+                    {
+                        <td>
+                            <button type="submit" class = "btn-redgrd" style = "vertical-align:middle;height:45px;margin-left:20px;border-radius:2vw;white-space: normal;line-height:18px" href="@Url.Action("Cancel", "BuySell", new { id = item.AccInv.Id })">Cancel<br />Sale</button>
+                        </td>
+}
+                }
+                else
+                {
+                    <td />}
+            </tr>
+            <tr style="display:none"> <td colspan="5">zzzz</td></tr>
+
+            <tr style="display:none" id="@("trSellSM"+@item.AccInv.Id)">
+
+                @if (!item.AccInv.ForSale.Value)
+                {
+                    <td valign="middle" colspan="5" align="right" style="padding-right:5vw">
+                        @if (item.Inv.Type.Value > 1)
+                        {
+                            using (Html.BeginForm("Sell", "BuySell", new { id = item.AccInv.Id, prfx = "SM" }, FormMethod.Post))
+                            {
+                                <table style="border:0;border-collapse:collapse;padding:0px;margin:0px">
+                                    <tr>
+                                        <td style="border:0;border-collapse:collapse;padding:0px;padding-left:10px;margin:0px" nowrap>Sell Amt ($): </td>
+                                        <td style="border:0;border-collapse:collapse;padding:0px;padding-left:10px;margin:0px">@Html.TextBox("txtSellAmtSM" + item.AccInv.Id, item.CurVal.ToString("0.##"), new { @class = "txtbox-custom", style = "width:80px;" })</td>
+                                        <td style="border:0;border-collapse:collapse;padding:0px;padding-left:10px;margin:0px" nowrap>Discount (%): </td>
+                                        @if (!Util.UserIsInstitutional(Session))
+                                           { <td style="border:0;border-collapse:collapse;padding:0px;padding-left:10px;margin:0px">@Html.TextBox("txtDiscountSM" + item.AccInv.Id, 0, new { @class = "txtbox-custom", style = "width:30px;" })</td> }
+                                        else
+                                           { <td style = "padding:0px;padding-left:5px;padding-right:5px;margin:0px;background-color:antiquewhite;border:solid black 1px"> 50% PM </td> }
+                                        <td style="border:0;border-collapse:collapse;padding:0px;padding-left:10px;margin:0px"><button type="submit" class="btn-greengrd" style="height:20px;padding-top:0px;line-height:0;margin-left:20px;vertical-align:middle">Sell</button></td>
+                                        <td style="border:0;border-collapse:collapse;padding:0px;padding-left:5px;margin:0px"><button class="btn-bluegrd" style="height:20px;padding-top:0px;line-height:0;margin-left:10px;vertical-align:middle" onclick="toggleTR(0, @item.AccInv.Id);return false;">Close ▲</button></td>
+                                    </tr>
+                                </table>
+}
+                        }
+                    </td>
+}
+            </tr>
+
+
+
+        }
+
+        @if (Model != null && Model.Item1.Count() == 0)
+        {
+            <tr><td colspan="5">You have no investments</td></tr>
+        }
+
+
+    </table>
+
+
+
+    <br />
+
+    <h3>Investments For Purchase</h3>
+
+    <table class="table table-striped tbldata">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().Inv.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().AccInv.LockStartDate)
+                </th>
+                <th>
+                    Value (Cost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item2.FirstOrDefault().AccInv.Discount)
+                </th>
+                <th>Buy Amt</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Item2)
+        {
+            <tr>
+                <td>
+                    @Html.Raw(string.Concat(@Html.DisplayFor(modelItem => item.Inv.Title), "<br/>", item.Inv.IRR.Value.ToString("F2") + " %"))
+                </td>
+                <td>
+                    @(item.AccInv.LockStartDate.HasValue ? item.AccInv.LockStartDate.Value.ToString("yyyy-M-d") : "")
+                </td>
+                <td>
+                    @if (item.AccInv.Discount == 0)
+                    { @item.CurVal.ToString("C2") }
+                    else
+                    { @(string.Concat(@item.CurVal.ToString("C2"), " (", (item.CurVal * (100 - item.AccInv.Discount.Value) / 100m).ToString("C2"), ")"));
+                    }
+                </td>
+                <td>
+                    @if (item.AccInv.ForSale.Value)
+                    {
+                        if (item.AccInv.Discount > 0)
+                        { @(string.Concat((item.AccInv.Discount.Value / 100m).ToString("P"), " (", (item.CurVal * (item.AccInv.Discount.Value) / 100m).ToString("C2"), ")"));  }
+                        else
+                        { @((item.AccInv.Discount.Value / 100m).ToString("P")); }
+                    }
+                </td>
+                <td valign="middle" nowrap>
+                    @using (Html.BeginForm("Buy", "BuySell", new { id = item.AccInv.Id, prfx = "SM" }, FormMethod.Post, new { id = "frmSMBY" + item.AccInv.Id }))
+                    {
+                        @Html.TextBox("txtBuyAmtSM" + item.AccInv.Id, null, new { @class = "txtbox-custom", style = "width:60px;" })
+                        <!--<a class="btn-bluegrd" style="margin-left:20px;" onclick="CheckBuyPct('frmLGBY' + '@item.AccInv.Id', 'txtBuyAmt' + '@item.AccInv.Id', @item.BuyLimit);return false;">Buy</a>-->
+                        <button class="btn-bluegrd" style="height:20px;padding-top:0px;line-height:0;margin-left:20px;" onclick="ConfirmBuy('frmSMBY' + '@item.AccInv.Id', 'txtBuyAmtSM' + '@item.AccInv.Id', @item.BuyLimit);return false;">Buy</button>
+}
+                </td>
+            </tr>
+        }
+
+        @if (Model != null && Model.Item2.Count() == 0)
+        {
+            <tr><td colspan="6">There are no investments available for purchase</td></tr>
+        }
+
+    </table>
+</div>
+
+<img class="smallscrBS" src="../../Content/TransPixel.png" id="pixy" />
+
+<script>
+    /*
+    $(function () {
+        $("#dialog-confirm").dialog({
+            resizable: false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            buttons: {
+                "Confirm Purchase": function () {
+                    $(this).dialog("close");
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    });
+    */
+
+    function ConfirmBuy(frmName, buyAmtTxt, limit)
+    {
+        var buyAmt = $('#' + buyAmtTxt).val();
+        if (buyAmt == '') $('#' + buyAmtTxt).closest('td').children().hide(); //txt box + buy button
+        var bkclr = $('#' + buyAmtTxt).closest('tr').children().css('background-color');
+        //$('#' + buyAmtTxt).parents('tr').data('bkclr', $('#' + buyAmtTxt).closest('tr').children().css('background-color'))
+        $('#' + buyAmtTxt).parents('tr').children().css('background-color', 'darkseagreen');
+        if (buyAmt > limit) //warning
+        {
+            var msg = 'Super Yield recommends you keep each investment within 20% of your total account value. This purchase will exceeed the recommended purchase amount ($' + limit + ').<br /><br />Note that your purchase may be increased (less than $1) to prevent sub-dollar investments.<br/><br/>Do you wish to continue?';
+            $('#dlgText').html(msg);
+            $("#dialog-confirm").dialog({
+                resizable: false, height: "auto", width: 400, modal: true,
+                buttons: {
+                    "Confirm Purchase": function () { $('#' + frmName).submit(); },
+                    "Cancel": function () { $(this).dialog("close"); $('#' + buyAmtTxt).parents('tr').children().css('background-color', bkclr); $('#' + buyAmtTxt).closest('td').children().show();}
+                }
+            });
+        }
+        else //generic confirm
+        {
+            var msg = 'Note that your purchase may be increased (less than $1) to prevent sub-dollar investments. <br/><br/>Purchase this investment?';
+            $('#dlgText').html(msg);
+            $("#dialog-confirm").dialog({
+                resizable: false, height: "auto", width: 400, modal: true,
+                buttons: {
+                    "Confirm Purchase": function () { $('#' + frmName).submit(); },
+                    "Cancel": function () { $(this).dialog("close"); $('#' + buyAmtTxt).parents('tr').children().css('background-color', bkclr); $('#' + buyAmtTxt).closest('td').children().show();}
+                }
+            });
+        }
+    }
+</script>
+
+<div id="dialog-confirm" style="display:none" title="Confirm Purchase">
+    <table><tr>
+        <td valign="middle"><span class="ui-icon ui-icon-info" style="float:left; margin:12px 12px 20px 0;"></span></td>
+        <td valign="middle"><span id="dlgText"></span></td>
+   </tr></table>
+</div>
+
+
+
+
+
+
+<script>
+    function toggleTR(tggl, id) {
+        var isSmallScr = ($('#pixy').get(0).offsetParent != null);
+        var x = 'LG';
+        if (isSmallScr) x = 'SM'; 
+        var $t = $('#trSell' + x + id); 
+        var $btn = $('#btnSell' + x + id);
+        if ($t.is(":hidden"))
+        {
+            $t.show();
+            $btn.hide();  //▲▼
+        }
+        else  //$(element).is(":visible");
+        {
+            $t.hide();
+            $btn.show();  //▲▼
+        }
+    }
+
+    function toggleTRxx(tggl, id) {
+        var isSmallScr = (document.getElementById('pixy').offsetParent != null);
+        var x = 'LG';
+        if (isSmallScr) x = 'SM';
+        var t = document.getElementById('trSell' + x + id);
+        var btn = document.getElementById('btnSell' + x + id);
+        if (t.style.display == 'none') {
+            t.style.display = 'table-row';
+            btn.innerHTML = '';  //▲▼
+            btn.style.visibility = 'hidden';
+        }
+        else {
+            t.style.display = 'none';
+            btn.innerHTML = 'Sell ▼';  //▲▼
+            btn.style.visibility = 'visible';
+        }
+    }
+
+</script>

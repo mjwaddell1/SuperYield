@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SYMVC.Models.AccountTransaction>
+
+@{
+    ViewBag.Title = "All Transactions";
+}
+
+
+
+<div style="margin-left:3vw;margin-right:3vw">
+    <h2>
+        All Transactions&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Export CSV", "Export", "Admin", null, new { @class = "btn-bluegrd" })
+    </h2>
+    <table class="table table-striped tbldata">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FromAccount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FromInvestment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ToAccount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ToInvestment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreateDate)
+                </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeName)
+                </td>
+                <td>
+                    @item.Amount.Value.ToString("C2")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FromAccountName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FromInvestmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToAccountName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToInvestmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

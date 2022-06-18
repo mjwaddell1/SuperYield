@@ -1,0 +1,830 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+
+<style>
+    h1, h2, h3, h4 {
+        font-family: HelNeueLight, Arial
+    }
+</style>
+
+<center>
+    <div style="max-width:1300px;font-size:30px" id="divroot">
+
+        <img src="../../Content/SYLogoTreeFull.png" id="SYLogo" style="position:absolute;z-index:2;left:0;top:calc(40px + (2/1 * 2.2rem));width:1rem" />
+        <div id="div01">
+            <style>
+                .btn-custom1 {
+                    color: bisque;
+                    background-color: indianred;
+                    border-color: transparent;
+                    border-radius: 5rem;
+                }
+
+                .btn-custom1:hover, .btn-custom1:focus, .btn-custom1:active, .btn-custom1.active, .open > .dropdown-toggle.btn-custom1 {
+                    color: bisque;
+                    background-color: firebrick;
+                    border-color: transparent;
+                }
+            </style>
+            <img src="../../Content/Slides/ShellBeach18x9.jpg" style="width:100%;z-index:-1" />
+            <table style="width:100%;position:absolute;top:0px;margin-top:50px" id="tbl1">
+                <tr>
+                    <td>
+                        <table style="width:100%;height:100%">
+                            <tr><td style="width:10%"></td><td style="padding-top:2%; width:55%;font-size:0.25rem;font-family:HelNeueLight, Arial;font-weight:500;text-align:center"><span style="color:indianred;text-align:center;line-height:10px">When you invest, you are buying a day that you don’t have to work.</span><br /></td><td style="width:35%"></td></tr>
+                            <tr><td></td><td style="font-size:0.15rem;text-align:right;padding-right:0.5rem;font-family:Verdana, Geneva, Tahoma, sans-serif"><span style="color:indianred">- Aya Laraya</span></td><td></td></tr>
+                            <tr>
+                                <td></td>
+                                <td align="center">
+                                    <input type="button" class="btn btn-custom1" style="font-size:0.2rem;padding:0px; height:0.35rem;width:1.2rem;margin-top:0.5rem;border-color:transparent" value="Start Now" onclick="location.href='@Url.Action("Register", "Account", routeValues: null)'" />
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="div02" style="display:none">
+            <style>
+                .btn-custom2 {
+                    color: bisque;
+                    background-color: darkseagreen;
+                    border-color: transparent;
+                    border-radius: 5rem;
+                }
+
+                    .btn-custom2:hover, .btn-custom2:focus, .btn-custom2:active, .btn-custom2.active, .open > .dropdown-toggle.btn-custom2 {
+                        color: bisque;
+                        background-color: mediumseagreen;
+                        border-color: transparent;
+                    }
+            </style>
+            <img src="../../Content/Slides/TeddyBear18x9.jpg" style="width:100%;z-index:-1" />
+            <table style="width:100%;position:absolute;top:0px;margin-top:50px" id="tbl2">
+                <tr>
+                    <td>
+                        <table style="width:100%;height:100%">
+                            <tr><td style="width:1%"></td><td style="padding-top:2%; width:49%;font-size:0.25rem;font-family:HelNeueLight, Arial;font-weight:500;text-align:center"><span style="color:bisque;text-align:center">I made my first investment at age eleven.<br /> I was wasting my life until then.</span><br /></td><td style="width:50%"></td></tr>
+                            <tr><td></td><td style="font-size:0.15rem;text-align:right;padding-right:0.5rem;font-family:Verdana, Geneva, Tahoma, sans-serif"><span style="color:bisque">- Warren Buffet</span></td><td></td></tr>
+                            <tr>
+                                <td></td>
+                                <td align="center">
+                                    <input type="button" class="btn btn-custom2" style="font-size:0.2rem;padding:0px; height:0.35rem;width:1.2rem;margin-top:0.5rem;border-color:transparent" value="Start Now" onclick="location.href='@Url.Action("Register", "Account", routeValues: null)'" />
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="div03" style="display:none">
+            <style>
+                .btn-custom3 {
+                    color: bisque;
+                    background-color: darkolivegreen;
+                    border-color: transparent;
+                    border-radius: 20vw;
+                }
+
+                    .btn-custom3:hover, .btn-custom3:focus, .btn-custom3:active, .btn-custom3.active, .open > .dropdown-toggle.btn-custom3 {
+                        color: bisque;
+                        background-color: seagreen;
+                        border-color: transparent;
+                    }
+            </style>
+            <img src="../../Content/Slides/Vineyard18x9.jpg" style="width:100%;z-index:-1" />
+            <table style="width:100%;position:absolute;top:0px;margin-top:50px" id="tbl3">
+                <tr>
+                    <td>
+                        <table style="width:100%;height:100%">
+                            <tr><td style="width:10%"></td><td style="padding-top:2%; width:80%;text-align:center"><span style="color:darkolivegreen;font-size:0.25rem;font-family:HelNeueLight, Arial;font-weight:500;text-align:center">Investing puts money to work.<br /> The only reason to save money is to invest it.</span><br /></td><td style="width:10%"></td></tr>
+                            <tr><td></td><td style="font-size:0.15rem;text-align:right;padding-right:1.7rem;font-family:Verdana, Geneva, Tahoma, sans-serif"><span style="color:darkolivegreen">- Grant Cardone</span></td><td></td></tr>
+                            <tr>
+                                <td></td>
+                                <td align="center">
+                                    <input type="button" class="btn btn-custom3" style="font-size:0.2rem;padding:0px; height:0.35rem;width:1.2rem;margin-top:0.5rem;border-color:transparent" value="Start Now" onclick="location.href='@Url.Action("Register", "Account", routeValues: null)'" />
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="div04" style="display:none">
+            <style>
+                .btn-custom4 {
+                    color: bisque;
+                    background-color: royalblue;
+                    border-color: transparent;
+                    border-radius: 20vw;
+                }
+
+                    .btn-custom4:hover, .btn-custom4:focus, .btn-custom4:active, .btn-custom4.active, .open > .dropdown-toggle.btn-custom4 {
+                        color: bisque;
+                        background-color: dodgerblue;
+                        border-color: transparent;
+                    }
+            </style>
+            <img src="../../Content/Slides/BeachBird18x9.jpg" style="width:100%;z-index:-1" />
+            <table style="width:100%;position:absolute;top:0px;margin-top:40px" id="tbl4">
+                <tr>
+                    <td>
+                        <table style="width:100%;height:100%">
+                            <tr><td style="width:50%"></td><td style="padding-top:15%; width:45%;text-align:center"><span style="color:bisque;font-size:0.25rem;font-family:HelNeueLight, Arial;font-weight:500;text-align:center">Don’t work for money;<br /> make it work for you.</span><br /></td><td style="width:5%"></td></tr>
+                            <tr><td></td><td style="font-size:0.15rem;text-align:right;padding-right:1.2rem;font-family:Verdana, Geneva, Tahoma, sans-serif"><span style="color:bisque">- Robert Kiyosaki</span></td><td></td></tr>
+                            <tr>
+                                <td></td>
+                                <td align="center">
+                                    <input type="button" class="btn btn-custom4" style="font-size:0.2rem;padding:0px; height:0.35rem;width:1.2rem;margin-top:0.5rem;border-color:transparent" value="Start Now" onclick="location.href='@Url.Action("Register", "Account", routeValues: null)'" />
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <script>
+            var ctr = 2;
+            setInterval(function () {
+                for (x = 1; x < 5; x++)
+                    document.getElementById("div0" + x).style.display = "none";
+                document.getElementById("div0" + (ctr++)).style.display = "block";  //"block"
+                setTop();
+                doSize();
+                if (ctr == 5) ctr = 1;
+                //doSize();
+            }, 5000);
+        </script>
+
+        <center>
+            <div style="padding:15px;background-color:indianred;color:navajowhite">
+                <h4 style="font-weight:900;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size:0.2rem">
+                    This site is under development.<br /> Super Yield is not currently accepting new investors.
+                    <br /><br />If you would like to be notified when Super Yield goes live,<br /> please use our
+                    @Html.ActionLink("Contact Us", "Create", "ContactUs", null, new { style = "color:ghostwhite" }) page.<br />
+                </h4>
+            </div>
+        </center>
+
+        <br /><br />
+
+        <center>
+            <!--
+            --- Laptop background ----
+                    <div style="width:90%">
+                    <table style="width:100%;background-image:url('../../Content/LaptopSY.png');background-repeat:no-repeat;background-position: right bottom;background-size:contain">
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2" style="text-align:center;width:70%"><h2>Unlock a new world of real estate investing.</h2></td><td style="width:30%"/></tr>
+                                    <tr><td colspan="2" style="padding:5px;text-align:center">You can invest your money, according to your goals, in a portfolio filled with dozens of real estate projects — each one carefully handpicked and proactively developed with the goal of growing your net worth.<br /><br /></td></tr>
+                                    <tr><td style="padding:5px"><img src="~/Content/ArrowCircle.png" style="width:40px" /></td><td style="padding-left:5px"><h4><b>8.7 – 12.4%</b> historical annual returns</h4></td></tr>
+                                    <tr><td style="padding:5px"><img src="~/Content/ArrowCircle.png" style="width:40px" /></td><td style="padding-left:5px"><h4><b>Diversify</b> your portfolio with real estate</h4></td></tr>
+                                    <tr><td style="padding:5px"><img src="~/Content/ArrowCircle.png" style="width:40px" /></td><td style="padding-left:5px"><h4><b>Maximize</b> your earnings with our low-fee approach</h4></td></tr>
+                                </table>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+                    -->
+            <div style="width:95%;font-family:HelNeueLight, Arial">
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <table>
+                                <tr><td colspan="2" style="text-align:center;"><span style="font-family:HelNeueLight, Arial;font-size:0.25rem">Unlock opportunities in asset-based investing.</span></td></tr>
+                                <tr><td colspan="2" style="padding:5px;text-align:center;font-family:HelNeueLight, Arial;font-size:0.18rem">You can invest your money, according to your goals, in a portfolio filled with dozens of investment projects — each one carefully handpicked and proactively developed with the goal of growing your net worth.<br /><br /></td></tr>
+                                <tr><td style="padding:5px"><img src="~/Content/ArrowCircle.png" style="width:40px" /></td><td style="padding-left:5px;font-family:HelNeueLight, Arial;font-size:0.17rem"><span><b>15 – 22%</b> historical annual returns</span></td></tr>
+                                <tr><td style="padding:5px"><img src="~/Content/ArrowCircle.png" style="width:40px" /></td><td style="padding-left:5px;font-family:HelNeueLight, Arial;font-size:0.17rem"><span><b>Diversify</b> your portfolio with settlement loans, real estate, and debt finance</span></td></tr>
+                                <tr><td style="padding:5px"><img src="~/Content/ArrowCircle.png" style="width:40px" /></td><td style="padding-left:5px;font-family:HelNeueLight, Arial;font-size:0.17rem"><span><b>Maximize</b> your earnings with our low-fee approach</span></td></tr>
+                            </table>
+                        </td>
+                        <td style="padding-left:5vw">
+                            <img src="../../Content/laptop_tablet_phone.png" class="largescr" style="width:100%" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <center><img src="../../Content/laptop_tablet_phone.png" class="smallscr" style="width:50vw;padding-top:10px" /></center>
+            <br />
+            <div style="text-align:center;width:95%">
+                <table style="margin:auto">
+                    <tr><td><span style="font-family:HelNeueLight, Arial;font-size:0.25rem">Add high-return projects to your portfolio.</span></td></tr>
+                    <tr><td><img src="../../Content/CircuitIcons.png" style="width:100%" /></td></tr>
+                    <tr><td style="text-align:center;font-family:HelNeueLight, Arial;font-size:0.18rem"><br />Invest in million-dollar deals without writing million-dollar checks. We make it easy to track your investements, and will keep you updated on each project’s progress.</td></tr>
+                </table>
+            </div>
+            <br />
+            <div style="text-align:center;width:95%">
+                <table style="margin:auto;">
+                    <tr><td style="padding:5px"><span style="font-family:HelNeueLight, Arial;font-size:0.25rem">Pair security with performance.</span></td></tr>
+                    <tr><td style="padding:5px;font-family:HelNeueLight, Arial;font-size:0.18rem">Regardless of your net worth, you can now benefit from Super Yield's unique potential for generating consistent cash flow and long-term appreciation. This is a level of asset-based investing that was previously available only to the wealthiest investors and institutions.</td></tr>
+                </table>
+            </div>
+
+
+            <div style="width:95%;max-width:1200px">
+                <br />
+                <table style="width:100%">
+                    <tr><td style="text-align:center;font-family:HelNeueBold, Arial;font-size:0.2rem"><b>$1000 Compounded 10 Year Growth</b></td><td class="largescr" style="text-align:center;font-family:HelNeueBold, Arial;font-size:0.2rem;padding-left:35px"><b>10 Yr Total Return</b></td></tr>
+                    <tr>
+                        <td style="vertical-align:middle;padding:5px"><img class="largescr" src="../../Content/ChartPct.png" style="width:6.5rem;box-shadow: 5px 5px 2px grey" /></td>
+                        <td valign="top" class="largescr" style="padding-top:20px;padding-left:5px">
+                            <table style="width:100%;margin:auto;">
+                                <tr style="border-width:thick;"><td style="text-align:center;border-right:solid thin;padding:20px;font-size:0.18rem"><b>Yearly<br />Growth</b></td><td style="padding:20px;font-size:0.18rem"><b>Total<br />Return</b></td></tr>
+                                <tr style="border-width:thick;border-top:solid thin"><td style="text-align:center;border-right:solid thin;padding:5px;font-size:0.18rem">10 %</td><td style="text-align:center;font-size:0.18rem;">159 %</td></tr>
+                                <tr style="border-width:thick;border-top:solid thin;"><td style="text-align:center;border-right:solid thin;padding:5px;font-size:0.18rem">15 %</td><td style="text-align:center;font-size:0.18rem;">304 %</td></tr>
+                                <tr style="border-width:thick;border-top:solid thin;border-bottom:solid thin;"><td style="text-align:center;border-right:solid thin;padding:5px;font-size:0.18rem">20 %</td><td style="text-align:center;font-size:0.18rem;">519 %</td></tr>
+                                <tr><td align="center" style="padding-top:15px" colspan="2"><img src="../../Content/circle chart.png" style="width:1.1rem" /></td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="smallscr">
+                <img src="../../Content/ChartPct.png" style="width:8rem;box-shadow: 5px 5px 2px grey;" />
+                <table>
+                    <tr><td style="font-family:HelNeueBold, Arial;font-size:0.35rem;padding-top:15px" align="center"><b><br />10 Yr Total Return</b></td></tr>
+                    <tr>
+                        <td valign="top" style="padding-top:10px" align="center">
+                            <table>
+                                <tr style="border-width:thick;"><td style="text-align:center;border-right:solid thin;padding:20px;font-size:0.3rem"><b>Yearly<br />Growth</b></td><td style="padding:20px;font-size:0.3rem"><b>Total<br />Return</b></td></tr>
+                                <tr style="border-width:thick;border-top:solid thin"><td style="text-align:center;border-right:solid thin;padding:5px;font-size:0.3rem">10 %</td><td style="text-align:center;font-size:0.3rem;">159 %</td></tr>
+                                <tr style="border-width:thick;border-top:solid thin;"><td style="text-align:center;border-right:solid thin;padding:5px;font-size:0.3rem">15 %</td><td style="text-align:center;font-size:0.3rem;">304 %</td></tr>
+                                <tr style="border-width:thick;border-top:solid thin;border-bottom:solid thin;"><td style="text-align:center;border-right:solid thin;padding:5px;font-size:0.3rem">20 %</td><td style="text-align:center;font-size:0.3rem;">519 %</td></tr>
+                            </table>
+                        </td>
+                        <td align="center" style="padding-left:15px"><img src="../../Content/circle chart.png" style="width:2rem" /></td>
+                    </tr>
+                </table>
+            </div>
+
+            <style>
+            </style>
+
+            <br />
+            <br />
+            <div class="largescr" id="invTitle1" style="position:absolute;top:0"><span class="invtxt">LITIGATION</span></div>
+            <div class="largescr" id="invTitle2" style="position:absolute;top:0"><span class="invtxt">REAL ESTATE</span></div>
+            <div class="largescr" id="invTitle3" style="position:absolute;top:0"><span class="invtxt">LENDING</span></div>
+            <div class="largescr" id="invTitle4" style="position:absolute;top:0"><span class="invtxt">RETAIL &amp; FRANCHISE</span></div>
+            <div class="largescr" id="invTitle5" style="position:absolute;top:0"><span class="invtxt">FACTORING</span></div>
+            <div class="largescr" id="invTitle6" style="position:absolute;top:0"><span class="invtxt">OPPORTUNITY FUND</span></div>
+
+            <div class="smallscr" id="invTitle7" style="position:absolute;top:0"><span class="invtxtsm">LITIGATION</span></div>
+            <div class="smallscr" id="invTitle8" style="position:absolute;top:0"><span class="invtxtsm">REAL ESTATE</span></div>
+            <div class="smallscr" id="invTitle11" style="position:absolute;top:0"><span class="invtxtsm">LENDING</span></div>
+            <div class="smallscr" id="invTitle9" style="position:absolute;top:0"><span class="invtxtsm">RETAIL &amp; FRANCHISE</span></div>
+            <div class="smallscr" id="invTitle10" style="position:absolute;top:0"><span class="invtxtsm">FACTORING</span></div>
+            <div class="smallscr" id="invTitle12" style="position:absolute;top:0"><span class="invtxtsm">OPPORTUNITY FUND</span></div>
+
+            <div>
+                <div class="largescr">
+                    <table style="width:100%;">
+                        <tr><td>&nbsp;</td></tr>
+                        <tr><td colspan="7" style="text-align:center;font-size:xx-large;font-family:HelNeueLight, Arial">INVESTMENT OPPORTUNITIES<br /></td></tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <td></td>
+                            <td class="shad" style="text-align:center;background-color:darkslategray;font-weight:700;padding:3px;border-top-left-radius:7px;border-top-right-radius:7px;height:9px" valign="middle" id="invTd1"></td>
+                            <td></td>
+                            <td class="shad" style="text-align:center;background-color:darkslategray;font-weight:900;padding:3px;border-top-left-radius:7px;border-top-right-radius:7px;height:9px" valign="middle" id="invTd2"></td>
+                            <td></td>
+                            <td class="shad" style="text-align:center;background-color:darkslategray;font-weight:900;padding:3px;border-top-left-radius:7px;border-top-right-radius:7px;height:9px" valign="middle" id="invTd3"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:10%" />
+                            <td class="shad" style="width:25%;padding:0px;margin:0px;background-color:darkslategray"><img src="../../Content/stockvault-gavel137270-8x6.jpg" style="width:100%" /></td>
+                            <td style="width:2%" />
+                            <td class="shad" style="width:25%;padding:0px;margin:0px;background-color:darkslategray"><img src="../../Content/sean-pollock-203658-building-8x6.jpg" style="width:100%" /></td>
+                            <td style="width:2%" />
+                            <td class="shad" style="width:25%;padding:0px;margin:0px;background-color:darkslategray"><img src="../../Content/pepi-stojanovski-509192-8x6.jpg" style="width:100%" /></td>
+                            <td style="width:10%" />
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="shad grdgrn" style="padding:5px;margin:0px;text-align:center;border-bottom-left-radius:7px;border-bottom-right-radius:7px;">Pre-settlement funding<center><table style="width:70%;margin:3px"><tr><td style="height:2px;background-color:cadetblue"></td></tr></table></center>13% IRR<br />500 Day Holding<br />Open</td>
+                            <td></td>
+                            <td class="shad grdgrn" style="padding:5px;margin:0px;text-align:center;border-bottom-left-radius:7px;border-bottom-right-radius:7px;">Commercial and residential real estate<center><table style="width:70%;margin:3px"><tr><td style="height:2px;background-color:cadetblue"></td></tr></table></center>10% IRR<br />450 Day Holding<br />Open</td>
+                            <td></td>
+                            <td class="shad grdgrn" style="padding:5px;margin:0px;text-align:center;border-bottom-left-radius:7px;border-bottom-right-radius:7px;">Securities based lending<br />Merchant lending<center><table style="width:70%;margin:3px"><tr><td style="height:2px;background-color:cadetblue"></td></tr></table></center>11% IRR<br />100 Day Holding<br />Open</td>
+                        </tr>
+                        <tr><td colspan="7">&nbsp;</td></tr>
+                        <tr><td colspan="7">&nbsp;</td></tr>
+                        <tr>
+                            <td></td>
+                            <td class="shad" style="text-align:center;background-color:darkslategray;font-weight:900;padding:3px;border-top-left-radius:7px;border-top-right-radius:7px;height:9px" valign="middle" id="invTd4"></td>
+                            <td></td>
+                            <td class="shad" style="text-align:center;background-color:darkslategray;font-weight:900;padding:3px;border-top-left-radius:7px;border-top-right-radius:7px;height:9px" valign="middle" id="invTd5"></td>
+                            <td></td>
+                            <td class="shad" style="text-align:center;background-color:darkslategray;font-weight:900;padding:3px;border-top-left-radius:7px;border-top-right-radius:7px;height:9px" valign="middle" id="invTd6"></td>
+                        </tr>
+                        <tr>
+                            <td style="" />
+                            <td class="shad" style="padding:0px;margin:0px;background-color:darkslategray"><img src="../../Content/FranchiseTopGap.png" style="width:100%" /></td>
+                            <td style="" />
+                            <td class="shad" style="padding:0px;margin:0px;background-color:darkslategray"><img src="../../Content/cashregister.jpg" style="width:100%;" /></td>
+                            <td style="" />
+                            <td class="shad" style="padding:0px;margin:0px;background-color:darkslategray"><img src="../../Content/markos-mant-672369-sailboat-8x6.jpg" style="width:100%" /></td>
+                            <td style="" />
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="shad grdgrn" style="padding:5px;margin:0px;text-align:center;border-bottom-left-radius:7px;border-bottom-right-radius:7px;">Retail stores and franchises<center><table style="width:70%;margin:3px"><tr><td style="height:2px;background-color:cadetblue"></td></tr></table></center>14% IRR<br />50 Day Holding<br />Open</td>
+                            <td></td>
+                            <td class="shad grdgrn" style="padding:5px;margin:0px;text-align:center;border-bottom-left-radius:7px;border-bottom-right-radius:7px;">Purchasing debt from other firms<center><table style="width:70%;margin:3px"><tr><td style="height:2px;background-color:cadetblue"></td></tr></table></center>15% IRR<br />100 Day Holding<br />Open</td>
+                            <td></td>
+                            <td class="shad grdgrn" style="padding:5px;margin:0px;text-align:center;border-bottom-left-radius:7px;border-bottom-right-radius:7px;">Exploring new investments<center><table style="width:70%;margin:3px"><tr><td style="height:2px;background-color:cadetblue"></td></tr></table></center>11% IRR<br />225 Day Holding<br />Open</td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="smallscr">
+                    <table style="width:100%;">
+                        <tr><td>&nbsp;</td></tr>
+                        <tr><td colspan="5" style="text-align:center;font-size:xx-large;font-family:HelNeueLight, Arial">INVESTMENT OPPORTUNITIES<br /></td></tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <td></td>
+                            <td class="shad" style="text-align:center;background-color:darkslategray;font-weight:700;padding:3px;border-top-left-radius:7px;border-top-right-radius:7px;height:9px" valign="middle" id="invTd7"></td>
+                            <td></td>
+                            <td class="shad" style="text-align:center;background-color:darkslategray;font-weight:700;padding:3px;border-top-left-radius:7px;border-top-right-radius:7px;height:9px" valign="middle" id="invTd8"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:11%" />
+                            <td class="shad" style="width:38%;padding:0px;margin:0px;;background-color:darkslategray"><img src="../../Content/stockvault-gavel137270-8x6.jpg" style="width:100%" /></td>
+                            <td style="width:2%" />
+                            <td class="shad" style="width:38%;padding:0px;margin:0px;;background-color:darkslategray"><img src="../../Content/sean-pollock-203658-building-8x6.jpg" style="width:100%" /></td>
+                            <td style="width:11%" />
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="shad grdgrn" style="padding:5px;margin:0px;text-align:center;border-bottom-left-radius:7px;border-bottom-right-radius:7px;">Pre-settlement funding<center><table style="width:70%;margin:3px"><tr><td style="height:2px;background-color:cadetblue"></td></tr></table></center>13% IRR<br />500 Day Holding<br />Open</td>
+                            <td></td>
+                            <td class="shad grdgrn" style="padding:5px;margin:0px;text-align:center;border-bottom-left-radius:7px;border-bottom-right-radius:7px;">Commercial and residential real estate<center><table style="width:70%;margin:3px"><tr><td style="height:2px;background-color:cadetblue"></td></tr></table></center>10% IRR<br />450 Day Holding<br />Open</td>
+                        </tr>
+                        <tr><td colspan="5">&nbsp;</td></tr>
+                        <tr><td colspan="5">&nbsp;</td></tr>
+                        <tr>
+                            <td></td>
+                            <td class="shad" style="text-align:center;background-color:darkslategray;font-weight:700;padding:3px;border-top-left-radius:7px;border-top-right-radius:7px;height:9px" valign="middle" id="invTd9"></td>
+                            <td></td>
+                            <td class="shad" style="text-align:center;background-color:darkslategray;font-weight:700;padding:3px;border-top-left-radius:7px;border-top-right-radius:7px;height:9px" valign="middle" id="invTd10"></td>
+                        </tr>
+                        <tr>
+                            <td style="" />
+                            <td class="shad" style="padding:0px;margin:0px;background-color:darkslategray"><img src="../../Content/FranchiseTopGap.png" style="width:100%" /></td>
+                            <td style="" />
+                            <td class="shad" style="padding:0px;margin:0px;background-color:darkslategray"><img src="../../Content/cashregister.jpg" style="width:100%;" /></td>
+                            <td style="" />
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="shad grdgrn" style="padding:5px;margin:0px;text-align:center;border-bottom-left-radius:7px;border-bottom-right-radius:7px;">Retail stores and franchises<center><table style="width:70%;margin:3px"><tr><td style="height:2px;background-color:cadetblue"></td></tr></table></center>14% IRR<br />50 Day Holding<br />Open</td>
+                            <td></td>
+                            <td class="shad grdgrn" style="padding:5px;margin:0px;text-align:center;border-bottom-left-radius:7px;border-bottom-right-radius:7px;">Purchasing debt from other firms<center><table style="width:70%;margin:3px"><tr><td style="height:2px;background-color:cadetblue"></td></tr></table></center>15% IRR<br />100 Day Holding<br />Open</td>
+                        </tr>
+                        <tr><td colspan="5">&nbsp;</td></tr>
+                        <tr><td colspan="5">&nbsp;</td></tr>
+                        <tr>
+                            <td></td>
+                            <td class="shad" style="text-align:center;background-color:darkslategray;font-weight:700;padding:3px;border-top-left-radius:7px;border-top-right-radius:7px;height:9px" valign="middle" id="invTd11"></td>
+                            <td></td>
+                            <td class="shad" style="text-align:center;background-color:darkslategray;font-weight:700;padding:3px;border-top-left-radius:7px;border-top-right-radius:7px;height:9px" valign="middle" id="invTd12"></td>
+                        </tr>
+                        <tr>
+                            <td style="" />
+                            <td class="shad" style="padding:0px;margin:0px;background-color:darkslategray"><img src="../../Content/pepi-stojanovski-509192-8x6.jpg" style="width:100%" /></td>
+                            <td style="" />
+                            <td class="shad" style="padding:0px;margin:0px;background-color:darkslategray"><img src="../../Content/markos-mant-672369-sailboat-8x6.jpg" style="width:100%;" /></td>
+                            <td style="" />
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="shad grdgrn" style="padding:5px;margin:0px;text-align:center;border-bottom-left-radius:7px;border-bottom-right-radius:7px;">Securities based lending<br />Merchant lending<center><table style="width:70%;margin:3px"><tr><td style="height:2px;background-color:cadetblue"></td></tr></table></center>14% IRR<br />50 Day Holding<br />Open</td>
+                            <td></td>
+                            <td class="shad grdgrn" style="padding:5px;margin:0px;text-align:center;border-bottom-left-radius:7px;border-bottom-right-radius:7px;">Exploring new investments<center><table style="width:70%;margin:3px"><tr><td style="height:2px;background-color:cadetblue"></td></tr></table></center>15% IRR<br />100 Day Holding<br />Open</td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <br />
+                <br />
+                <!--
+                <div style="width:100%;" align="center">
+                    <table style="width:80%;background-image:radial-gradient(darkseagreen, transparent)" cellspacing="5">
+                        <tr><td>&nbsp;</td></tr>
+                        <tr><td colspan="3" style="text-align:center;font-size:xx-large;font-family:HelNeueLight, Arial">WHY CHOOSE SUPER YIELD<br /></td></tr>
+                        <tr></tr>
+                        <tr>
+                            <td style="width:1%"></td>
+                            <td style="text-align:center;font-weight:700;padding:5px">
+                                <h4><b>Less Risk</b><br />Diversified investments create safety</h4>
+                                <h4><b>Higher Returns</b><br />We choose investments with the most profit</h4>
+                                <h4><b>Secondary Market</b><br />You can sell your investments anytime to other Super Yield investors</h4>
+                                <h4><b>No Upfront Fees</b><br />Super Yield shares in your investments so we don't make money unless you make money</h4>
+
+                                <br /><br />
+                            </td>
+                            <td style="width:1%"></td>
+                        </tr>
+                    </table>
+                </div>
+                    -->
+                <br />
+                <div class="largescr">
+                    <center>
+                        <img src="../../Content/WhyChoose.png" style="width:85vw;padding-left:3vw" />
+                    </center>
+                </div>
+                <div class="smallscr">
+                    <center>
+                        <img src="../../Content/WhyChooseStack.png" style="width:80vw;padding-left:3vw" />
+                    </center>
+                </div>
+                <br />
+
+                <div class="largescr" style="width:100%">
+                    <table style="width:80%">
+                        <tr><td colspan="5" style="padding:20px;border-bottom:none" align="center"><h2>With a variety of investment choices, you can choose a portfolio based on your investment goals.</h2></td></tr>
+                        <tr><td style="border-bottom:solid;border-width:1px"></td><td></td><td style="border-bottom:solid;border-width:1px"></td><td></td><td style="border-bottom:solid;border-width:1px"></td></tr>
+                        <tr>
+                            <td style="width:32%;padding:0;background-color:ghostwhite;border-left:solid;border-right:solid; border-width:1px">
+                                <img src="../../Content/SunRiverClip.png" style="width:100%" />
+                            </td>
+                            <td style="width:2%;border-top:none"></td>
+                            <td style="width:32%;padding:0;background-color:ghostwhite;border-left:solid;border-right:solid;border-width:1px">
+                                <img src="../../Content/BalanceRockClip.png" style="width:100%" />
+                            </td>
+                            <td style="width:2%"></td>
+                            <td style="width:32%;padding:0;background-color:ghostwhite;border-left:solid;border-right:solid;border-width:1px">
+                                <img src="../../Content/SunflowerClip.png" style="width:100%" />
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td align="center" style="font-weight:700;font-size:x-large;padding:10px;background-color:ghostwhite;border-left:solid;border-right:solid;border-width:1px;font-family:HelNeueLight, Arial">Supplemental Income</td>
+                            <td></td>
+                            <td align="center" style="font-weight:700;font-size:x-large;padding:10px;background-color:ghostwhite;border-left:solid;border-right:solid;border-width:1px;font-family:HelNeueLight, Arial">Balanced Portfolio</td>
+                            <td></td>
+                            <td align="center" style="font-weight:700;font-size:x-large;padding:10px;background-color:ghostwhite;border-left:solid;border-right:solid;border-width:1px;font-family:HelNeueLight, Arial">Growth</td>
+                        <tr>
+                            <td style="background-color:ghostwhite;padding:10px;border-left:solid;border-right:solid;border-width:1px;font-family:HelNeueLight, Arial" align="center">Portfolio predominantly comprised of cash-flow producing investments</td>
+                            <td></td>
+                            <td style="background-color:ghostwhite;padding:10px;border-left:solid;border-right:solid;border-width:1px;font-family:HelNeueLight, Arial" align="center">Build Wealth Confidently With A Diversified Portfolio All From One Place</td>
+                            <td></td>
+                            <td style="background-color:ghostwhite;padding:10px;border-left:solid;border-right:solid;border-width:1px;font-family:HelNeueLight, Arial" align="center">Portfolio Geared towards Higher Long-Term Returns</td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="background-color:ghostwhite;border-left:solid;border-right:solid;border-bottom:solid;border-width:1px">
+                                <table style="width:95%;margin-left:2vw;margin-bottom:2vw">
+                                    <tr>
+                                        <td style="width:10%;font-family:HelNeueLight, Arial">Dividends</td>
+                                        <td style="padding-left:1vw">
+                                            <table style="width:80%">
+                                                <tr>
+                                                    <td style="width:85%;padding:0;"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightseagreen;border-bottom-left-radius:3px;border-top-left-radius:3px" /></td>
+                                                    <td style="width:15%;padding:0"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightgray;border-bottom-right-radius:3px;border-top-right-radius:3px" /></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:auto;font-family:HelNeueLight, Arial">Appreciation</td>
+                                        <td style="padding-left:1vw">
+                                            <table style="width:80%">
+                                                <tr>
+                                                    <td style="width:20%;padding:0;"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightseagreen;border-bottom-left-radius:3px;border-top-left-radius:3px" /></td>
+                                                    <td style="width:80%;padding:0"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightgray;border-bottom-right-radius:3px;border-top-right-radius:3px" /></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </td>
+                            <td></td>
+                            <td align="center" style="background-color:ghostwhite;border-left:solid;border-right:solid;border-bottom:solid;border-width:1px">
+                                <table style="width:95%;margin-left:2vw;margin-bottom:2vw">
+                                    <tr>
+                                        <td style="width:10%;font-family:HelNeueLight, Arial">Dividends</td>
+                                        <td style="padding-left:1vw">
+                                            <table style="width:80%">
+                                                <tr>
+                                                    <td style="width:50%;padding:0;"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightseagreen;border-bottom-left-radius:3px;border-top-left-radius:3px" /></td>
+                                                    <td style="width:50%;padding:0"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightgray;border-bottom-right-radius:3px;border-top-right-radius:3px" /></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:auto;font-family:HelNeueLight, Arial">Appreciation</td>
+                                        <td style="padding-left:1vw">
+                                            <table style="width:80%">
+                                                <tr>
+                                                    <td style="width:50%;padding:0;"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightseagreen;border-bottom-left-radius:3px;border-top-left-radius:3px" /></td>
+                                                    <td style="width:50%;padding:0"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightgray;border-bottom-right-radius:3px;border-top-right-radius:3px" /></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </td>
+                            <td></td>
+                            <td align="center" style="background-color:ghostwhite;border-left:solid;border-right:solid;border-bottom:solid;border-width:1px">
+                                <table style="width:95%;margin-left:2vw;margin-bottom:2vw">
+                                    <tr>
+                                        <td style="width:10%;font-family:HelNeueLight, Arial">Dividends</td>
+                                        <td style="padding-left:1vw">
+                                            <table style="width:80%">
+                                                <tr>
+                                                    <td style="width:30%;padding:0;"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightseagreen;border-bottom-left-radius:3px;border-top-left-radius:3px" /></td>
+                                                    <td style="width:70%;padding:0"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightgray;border-bottom-right-radius:3px;border-top-right-radius:3px" /></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:auto;font-family:HelNeueLight, Arial">Appreciation</td>
+                                        <td style="padding-left:1vw">
+                                            <table style="width:80%">
+                                                <tr>
+                                                    <td style="width:70%;padding:0;"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightseagreen;border-bottom-left-radius:3px;border-top-left-radius:3px" /></td>
+                                                    <td style="width:30%;padding:0"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightgray;border-bottom-right-radius:3px;border-top-right-radius:3px" /></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+
+
+
+
+
+                <div class="smallscr" style="width:100%">
+                    <div style="width:80%;padding-bottom:10px">
+                        <h2>With a variety of investment choices, you can choose a portfolio based on your investment goals.</h2>
+                    </div>
+                    <table style="width:80%;margin-bottom:20px">
+                        <tr>
+                            <td style="padding:0;background-color:ghostwhite;border-left:solid;border-right:solid;border-top:solid; border-width:1px">
+                                <img src="../../Content/SunRiverClip.png" style="width:100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="font-weight:700;font-size:x-large;padding:10px;background-color:ghostwhite;border-left:solid;border-right:solid;border-width:1px;font-family:HelNeueLight, Arial">Supplemental Income</td>
+                        <tr>
+                            <td style="background-color:ghostwhite;padding:10px;border-left:solid;border-right:solid;border-width:1px;font-family:HelNeueLight, Arial" align="center">Portfolio predominantly comprised of cash-flow producing investments</td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="background-color:ghostwhite;border-left:solid;border-right:solid;border-bottom:solid;border-width:1px">
+                                <table style="width:85%;margin-left:10vw;margin-bottom:2vw">
+                                    <tr>
+                                        <td style="width:10%;font-family:HelNeueLight, Arial">Dividends</td>
+                                        <td style="padding-left:1vw">
+                                            <table style="width:80%">
+                                                <tr>
+                                                    <td style="width:85%;padding:0;"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightseagreen;border-bottom-left-radius:3px;border-top-left-radius:3px" /></td>
+                                                    <td style="width:15%;padding:0"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightgray;border-bottom-right-radius:3px;border-top-right-radius:3px" /></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:auto;font-family:HelNeueLight, Arial">Appreciation</td>
+                                        <td style="padding-left:1vw">
+                                            <table style="width:80%">
+                                                <tr>
+                                                    <td style="width:20%;padding:0;"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightseagreen;border-bottom-left-radius:3px;border-top-left-radius:3px" /></td>
+                                                    <td style="width:80%;padding:0"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightgray;border-bottom-right-radius:3px;border-top-right-radius:3px" /></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width:80%;margin-bottom:20px">
+                        <tr>
+                            <td style="padding:0;background-color:ghostwhite;border-left:solid;border-right:solid;border-top:solid; border-width:1px">
+                                <img src="../../Content/BalanceRockClip.png" style="width:100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="font-weight:700;font-size:x-large;padding:10px;background-color:ghostwhite;border-left:solid;border-right:solid;border-width:1px;font-family:HelNeueLight, Arial">Balanced Portfolio</td>
+                        <tr>
+                            <td style="background-color:ghostwhite;padding:10px;border-left:solid;border-right:solid;border-width:1px;font-family:HelNeueLight, Arial" align="center">Build Wealth Confidently With A Diversified Portfolio All From One Place</td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="background-color:ghostwhite;border-left:solid;border-right:solid;border-bottom:solid;border-width:1px">
+                                <table style="width:85%;margin-left:10vw;margin-bottom:2vw">
+                                    <tr>
+                                        <td style="width:10%;font-family:HelNeueLight, Arial">Dividends</td>
+                                        <td style="padding-left:1vw">
+                                            <table style="width:80%">
+                                                <tr>
+                                                    <td style="width:50%;padding:0;"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightseagreen;border-bottom-left-radius:3px;border-top-left-radius:3px" /></td>
+                                                    <td style="width:50%;padding:0"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightgray;border-bottom-right-radius:3px;border-top-right-radius:3px" /></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:auto;font-family:HelNeueLight, Arial">Appreciation</td>
+                                        <td style="padding-left:1vw">
+                                            <table style="width:80%">
+                                                <tr>
+                                                    <td style="width:50%;padding:0;"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightseagreen;border-bottom-left-radius:3px;border-top-left-radius:3px" /></td>
+                                                    <td style="width:50%;padding:0"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightgray;border-bottom-right-radius:3px;border-top-right-radius:3px" /></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width:80%">
+                        <tr>
+                            <td style="padding:0;background-color:ghostwhite;border-left:solid;border-right:solid;border-top:solid;border-width:1px">
+                                <img src="../../Content/SunflowerClip.png" style="width:100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="font-weight:700;font-size:x-large;padding:10px;background-color:ghostwhite;border-left:solid;border-right:solid;border-width:1px;font-family:HelNeueLight, Arial">Growth</td>
+                        <tr>
+                            <td style="background-color:ghostwhite;padding:10px;border-left:solid;border-right:solid;border-width:1px;font-family:HelNeueLight, Arial" align="center">Portfolio Geared towards Higher Long-Term Returns</td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="background-color:ghostwhite;border-left:solid;border-right:solid;border-bottom:solid;border-width:1px">
+                                <table style="width:85%;margin-left:10vw;margin-bottom:2vw">
+                                    <tr>
+                                        <td style="width:10%;font-family:HelNeueLight, Arial">Dividends</td>
+                                        <td style="padding-left:1vw">
+                                            <table style="width:80%">
+                                                <tr>
+                                                    <td style="width:30%;padding:0;"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightseagreen;border-bottom-left-radius:3px;border-top-left-radius:3px" /></td>
+                                                    <td style="width:70%;padding:0"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightgray;border-bottom-right-radius:3px;border-top-right-radius:3px" /></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:auto;font-family:HelNeueLight, Arial">Appreciation</td>
+                                        <td style="padding-left:1vw">
+                                            <table style="width:80%">
+                                                <tr>
+                                                    <td style="width:70%;padding:0;"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightseagreen;border-bottom-left-radius:3px;border-top-left-radius:3px" /></td>
+                                                    <td style="width:30%;padding:0"><img src="../../Content/TransPixel.png" style="width:100%;height:5px;background-color:lightgray;border-bottom-right-radius:3px;border-top-right-radius:3px" /></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+
+                <br />
+
+
+                <br />
+                <div class="largescr" style="width:80%;" align="center">
+                    <img src="~/Content/howitworks.png" style="width:100%" />
+                </div>
+                <div class="smallscr" style="width:80%;" align="center">
+                    <img src="~/Content/howitworkscircletop.png" style="width:100%" /><br /><br />
+                </div>
+                <br />
+                <center>
+                    <input type="button" class="btn btn-info" style="font-size:large;background-color:indianred;border-color:transparent;box-shadow: 5px 5px 2px grey" value="Start Investing Now" onclick="location.href='@Url.Action("Register", "Account", routeValues: null)'" />
+                </center>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="smallscr"><h3>Need help getting started?</h3>Our investments team would love to assist you.<br /><br /></div>
+
+            <table>
+                <tr>
+                    <td style="padding-left:10px;padding-right:10px"><img src="~/Content/hotgirl1.png" style="width:80px" /></td>
+                    <td style="padding-left:10px;padding-right:10px"><img src="~/Content/hotgirl2.png" style="width:80px" /></td>
+                    <td style="padding-left:10px;padding-right:10px"><img src="~/Content/hotgirl3.png" style="width:80px" /></td>
+                    <td class="largescr" style="padding-left:20px"><h3>Need help getting started?</h3>Our investments team would love to assist you.</td>
+                </tr>
+                <tr><td style="text-align:center">Alex</td><td style="text-align:center">Natalie</td><td style="text-align:center">Dylan</td><td></td></tr>
+            </table>
+            <br />
+            <br />
+            <a class="btn btn-info" style="font-size:medium;font-weight:600; background-color:darkgray;border-color:transparent;color:darkslategrey;box-shadow: 5px 5px 2px grey;border-radius:15px" href="mailto:Info@SuperYield.net" target="_blank"><span style="font-size:large;padding:0;margin:0">&#9993;</span> Info@SuperYield.net</a>
+            &nbsp;&nbsp;&nbsp;
+            @Html.ActionLink("Contact Us", "Create", "ContactUs", null, new { @class = "btn btn-info", style = "font-size:large;font-weight:600; background-color:darkgray;border-color:transparent;color:darkslategrey;box-shadow: 5px 5px 2px grey;border-radius:15px" })
+            <br /><br />
+            <br /><br />
+            <div style="font-size:x-small;width:80%;text-align:left">
+                Super Yield operates a website at SuperYield.net (the “Site”). By using this website, you accept our Terms of Use and Privacy Policy. Past performance is no guarantee of future results. Any historical returns, expected returns, or probability projections may not reflect actual future performance. All securities involve risk and may result in partial or total loss. While the data we use from third parties is believed to be reliable, we cannot ensure the accuracy or completeness of data provided by investors or other third parties. Neither Super Yield nor any of its affiliates provide tax advice and do not represent in any manner that the outcomes described herein will result in any particular tax consequence. Prospective investors should confer with their personal tax advisors regarding the tax consequences based on their particular circumstances. Neither Super Yield nor any of its affiliates assume responsibility for the tax consequences for any investor of any investment.
+                <br /><br />
+                The publicly filed offering circulars of the issuers sponsored by Super Yield, not all of which may be currently qualified by the Securities and Exchange Commission, may be found at SuperYield.net.
+                <br /><br />
+                THIS SITE IS UNDER DEVELOPMENT. Super Yield is in no way responsible for it's current content.
+                <br /><br />
+                © 2019 Super Yield, LLC. All Rights Reserved.
+                <br /><br />
+                Site Credits:........
+                <!--
+                <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/seanpollock?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Sean Pollock"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Sean Pollock</span></a>
+                <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/ricktap?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Rick Tap"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Rick Tap</span></a>
+                <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/umanoide?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Umanoide"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Umanoide</span></a>
+                <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/till_indeman?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Vladimir Solomyani"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Vladimir Solomyani</span></a>
+                <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/thisisramiro?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Ramiro Mendes"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Ramiro Mendes</span></a>
+                <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/g_rocharios?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Gabrielle Rocha Rios"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Gabrielle Rocha Rios</span></a>
+                <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/markos_mant?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Markos Mant"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Markos Mant</span></a>
+                -->
+            </div>
+
+
+        </center>
+    </div>
+</center>
+
+<script>
+    //alert(document.getElementById('invTd1').offsetTop);
+    //alert(document.getElementById('invTd1').getBoundingClientRect().top);
+    //alert(document.getElementById('invTitle1').getBoundingClientRect().top);
+    //alert(document.documentElement.scrollTop);// 1800
+
+    //document.getElementById('invTitle1').style.top = (document.documentElement.scrollTop + document.getElementById('invTd1').getBoundingClientRect().top + 8) + 'px';
+    setTop = function () {
+        document.getElementById('tbl1').style.top = (document.getElementById('div01').getBoundingClientRect().top + document.top) + "px";
+        document.getElementById('tbl2').style.top = (document.getElementById('div02').getBoundingClientRect().top + document.top) + "px";
+        document.getElementById('tbl3').style.top = (document.getElementById('div03').getBoundingClientRect().top + document.top) + "px";
+        document.getElementById('tbl4').style.top = (document.getElementById('div04').getBoundingClientRect().top + document.top) + "px";
+        //document.getElementById('SYLogo').style.top = "10vw";
+        //"invTd1"><span style="position:absolute;top:500px" id="invTitle1"
+        //alert(document.getElementById('invTd1').getBoundingClientRect().top + ' ' + document.top);
+        //document.getElementById('invTitle1').style.top = (document.getElementById('invTd1').getBoundingClientRect().top) + "px";
+    }
+    //document.getElementById('tbl3').style.maxWidth = document.getElementById('div03').getBoundingClientRect().width + "px";
+    //alert(document.getElementById('imgFlowers').getBoundingClientRect().top);
+
+    doSize = function () {
+        try {
+            //document.getElementById('divroot').style.fontSize = (document.getElementById('div01').getBoundingClientRect().width / 100) + "px";
+            var sz = document.getElementById('divroot').getBoundingClientRect().width / 10.0;
+            //if (sz < 90) sz = 90;
+            document.documentElement.style.fontSize = sz + "px";
+
+            document.getElementById('tbl1').style.width = document.getElementById('div01').getBoundingClientRect().width + "px";
+            document.getElementById('tbl2').style.width = document.getElementById('div02').getBoundingClientRect().width + "px";
+            document.getElementById('tbl3').style.width = document.getElementById('div03').getBoundingClientRect().width + "px";
+            document.getElementById('tbl4').style.width = document.getElementById('div04').getBoundingClientRect().width + "px";
+
+            document.getElementById('SYLogo').style.left = (document.getElementById('divroot').getBoundingClientRect().left + (0.88 * document.getElementById('divroot').getBoundingClientRect().width)) + "px";
+
+            for (var x = 1; x < 7; x++) {
+                document.getElementById('invTitle' + x).style.top = (window.pageYOffset + document.getElementById('invTd' + x).getBoundingClientRect().top + 15) + 'px';
+                document.getElementById('invTitle' + x).style.left = (document.getElementById('invTd' + x).getBoundingClientRect().left + 10) + 'px';
+            }
+            for (var x = 7; x < 13; x++) {
+                document.getElementById('invTitle' + x).style.top = (window.pageYOffset + document.getElementById('invTd' + x).getBoundingClientRect().top + 10) + 'px';
+                document.getElementById('invTitle' + x).style.left = (document.getElementById('invTd' + x).getBoundingClientRect().left + 10) + 'px';
+            }
+        }
+        catch (err) {
+            //alert(err.message);
+        }
+    }
+
+    setTop();
+    window.onresize = doSize;
+    // window.onscroll = setTop;
+    setTimeout(doSize, 100);
+</script>
+

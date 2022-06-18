@@ -1,0 +1,113 @@
+﻿@model Tuple<List<SYMVC.ViewModels.AccountInvestmentVO>, SYMVC.Models.UserAccount>
+
+@{
+    ViewBag.Title = "User Investments";
+}
+
+@if (Session["BS_ErrMsg"] != null)
+{
+    <div style="background-color:orangered;padding:5px 5px 5px 5px">@Session["BS_ErrMsg"].ToString()</div>
+    @(Session["BS_ErrMsg"] = null)
+}
+
+<div style="margin-left:3vw;margin-right:3vw">
+    <h2>User Investments</h2>
+    <br />
+    <span style="font-size:x-large;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">User Investments</span> &nbsp;&nbsp;&nbsp; 
+    <span style="color:darkgreen;font-size:x-large;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><i> @(Model.Item2.Email)</i></span>
+    <span style="color:@(Model.Item2.Status == 1 ? "darkgreen" : "darkred");font-size:medium;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+        &nbsp;&nbsp;&nbsp;&nbsp;<b>[@(Model.Item2.Status == 1 ? "Active" : "Locked")]</b>&nbsp;&nbsp;
+    </span>
+    <span style="padding-bottom:10px">
+        @Html.ActionLink((Model.Item2.Status == 1 ? "Lock" : "Unlock") + " Account", "LockAccountInv", "Admin", new { acctId = Model.Item2.Id }, new { @class = "btn-redgrd", style = "height:22px;margin-bottom:20px" })
+    </span>
+
+        <table class="table table-striped tbldata" style="margin-top:10px">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().Inv.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().Inv.IRR)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().AccInv.BuyDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().AccInv.LockStartDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().BuyVal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().PctChg)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().CurVal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().AccInv.ForSale)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item1.FirstOrDefault().AccInv.Discount)
+                    </th>
+                    <th style="text-align:center">@(Model.Item2.Status == 1 ? "Update" : "New Buy Amt")</th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model.Item1)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Inv.Title)
+                    </td>
+                    <td>
+                        @(item.Inv.IRR.Value.ToString("F2") + " %")
+                    </td>
+                    <td>
+                        @item.AccInv.BuyDate.Value.ToString("yyyy-M-d")
+                    </td>
+                    <td>
+                        @(item.AccInv.LockStartDate.HasValue ? item.AccInv.LockStartDate.Value.ToString("yyyy-M-d") : "")
+                    </td>
+                    <td>
+                        @item.BuyVal.ToString("C2")
+                    </td>
+                    <td>
+                        @item.PctChg.ToString("P")
+                    </td>
+                    <td>
+                        @item.CurVal.ToString("C2")
+                    </td>
+                    <td style="text-align:center">
+                        @if (item.AccInv.ForSale.Value)
+                        { <text>For Sale</text> }
+                    </td>
+                    <td style="text-align:center">
+                        @if (item.AccInv.ForSale.Value)
+                        { @((item.AccInv.Discount.Value / 100m).ToString("P")) }
+                    </td>
+                    @if (Model.Item2.Status != 1)
+                    {
+                        using(Html.BeginForm("UpdateUserInvestment", "Admin", new { id = item.AccInv.Id }, FormMethod.Post))
+                        {
+                            <td style="text-align:center">@Html.TextBox("txtAdjAmt" + item.AccInv.Id, null, new { @class = "txtbox-custom", style = "width:60px;" })</td>
+                            <td><button type="submit" class="btn-bluegrd" style="height:20px;padding-top:0px;line-height:0;margin-left:20px;" @(Model.Item2.Status == 1 ? "disabled" : "")>Update</button></td>
+                        }
+                    }
+                    else
+                    { <td style="color:indianred">Account Not Locked</td> <td></td> }
+                </tr>}
+
+            @if (Model != null && Model.Item1.Count() == 0)
+            {
+                <tr><td colspan="11">No investments</td></tr>}
+
+
+        </table>
+</div>
+
+
+
+

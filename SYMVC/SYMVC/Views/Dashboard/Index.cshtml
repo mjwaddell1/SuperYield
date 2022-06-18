@@ -1,0 +1,304 @@
+﻿@model IEnumerable<SYMVC.ViewModels.AccountInvestmentVO>
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawDonutChart);
+
+      function drawDonutChart() {
+          var isSmallScr = (document.getElementById('pixy').offsetParent != null);
+
+          var data = google.visualization.arrayToDataTable([
+          @Html.Raw(Util.GetJSChartData(Model))
+          ]);
+
+        //var dataXXX = google.visualization.arrayToDataTable([['Asset', 'Value'],['Work', 11],['Eat', 2],['Commute', 2],['Watch TV', 2],['Sleep', 7]]);
+
+        //// find total to calc % manually
+        //var totalData = google.visualization.data.group(
+        //    data,
+        //    [{ column: 0, modifier: function () { return 'total' }, type: 'string' }],
+        //    [{ column: 1, aggregation: google.visualization.data.sum, type: 'number' }]
+        //);
+
+        //// number formatter
+        //var formatPercent = new google.visualization.NumberFormat({
+        //    pattern: '0%'
+        //});
+
+        //// set formatted value for each row
+        //for (var i = 0; i < data.getNumberOfRows(); i++) {
+        //    var calcPercent = data.getValue(i, 1) / totalData.getValue(0, 1);
+        //    data.setFormattedValue(i, 1, formatPercent.formatValue(calcPercent*2));
+        //}
+
+         var hole = isSmallScr ? .3 : window.innerWidth / 3000.0;
+        if (hole < 0.25) hole = 0;
+        if (hole > 0.55) hole = .55;
+
+        var options = {
+          title: 'Portfolio Allocation',
+          pieHole: hole,
+          backgroundColor: 'transparent',
+          //pieSliceText: 'value',
+          width: window.innerWidth * (isSmallScr ? .75 : .35),
+          height: window.innerWidth * (isSmallScr ? .75 : .35),
+          titleTextStyle: { color: 'slate', fontSize: '17', bold: false, fontName: 'Arial' },
+          chartArea: { left: 20, top: 76, width: "95%", height: "95%" },
+          legend: { position: 'right' },
+          colors: ['#2C622D', '#439044','#5EC45F', '#6ADB6B', '#377938', '#439044', '#51AC52']
+          //colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6', '#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+</script>
+
+<script type="text/javascript">
+        google.charts.load('current', { 'packages': ['line'] });
+        google.charts.setOnLoadCallback(drawLineChart);
+
+        function drawLineChart() {
+            var isSmallScr = (document.getElementById('pixy').offsetParent != null);
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Date');
+            data.addColumn('number', 'Value');
+            //data.addColumn('number', 'The Avengers');
+            //data.addColumn('number', 'Transformers: Age of Extinction');
+
+            //data.addRows([
+            //    [1, 37.8, 80.8, 41.8],
+            //    [2, 30.9, 69.5, 32.4],
+            //    [3, 25.4, 57, 25.7],
+            //    [11, 5.3, 7.9, 4.7],
+            //    [12, 6.6, 8.4, 5.2],
+            //    [13, 4.8, 6.3, 3.6],
+            //    [14, 4.2, 6.2, 3.4]
+            //]);
+
+            //data.addRows([
+            //    ['3/1', 37.8],
+            //    ['4/1', 137.8],
+            //    ['5/1', 237.8],
+            //    ['6/1', 337.8],
+            //    ['7/1', 437.8],
+            //    ['8/1', 537.8],
+            //    ['9/1', 637.8],
+            //    ['10/1', 737.8],
+            //    ['11/1', 837.8],
+            //    ['12/1', 937.8]
+            //]);
+
+            //data.addRows([['3/1', 37.8], ['4/1', 137.8], ['5/1', 237.8], ['6/1', 337.8], ['7/1', 437.8], ['8/1', 537.8], ['9/1', 637.8], ['10/1', 737.8], ['11/1', 837.8], ['12/1', 937.8]]);
+            data.addRows([
+                @Html.Raw(Util.GetJSAcctValueData(Session))
+            ]);
+
+            var options = {
+                backgroundColor: 'transparent',
+                chart: {
+                    title: 'Total Account Value'
+                },
+                legend: { position: 'none' },
+                width: window.innerWidth * (isSmallScr ? .75 : .4),
+                height: window.innerWidth * (isSmallScr ? .60 : .3),
+                axes: {
+                    x: {
+                        0: { side: 'bottom' }
+                    }
+                },
+                hAxis: { textStyle: { color: '#008800' } },
+                vAxis: { textStyle: { color: '#008800' }, gridlines: { color: 'darkgray' }, viewWindow: { min: 0 } },
+                titleTextStyle: { color: 'slate', fontSize: '17', bold: false, fontName: 'Arial' },
+                chartArea: { left: 20, top: 20, width: "80%", height: "80%" },
+                colors: ['#439044', '#51AC52', '#5EC45F', '#6ADB6B', '#2C622D', '#377938', '#439044', '#51AC52']
+            };
+
+            if (isSmallScr)
+                var chart = new google.charts.Line(document.getElementById('line_top_x2'));
+            else
+                var chart = new google.charts.Line(document.getElementById('line_top_x1'));
+
+            chart.draw(data, google.charts.Line.convertOptions(options));
+        }
+</script>
+
+<img class="smallscr" src="../../Content/TransPixel.png" id="pixy"/>
+<div style="margin-left:3vw;margin-right:3vw">
+    <h2>
+        Dashboard&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("Buy & Sell", "Index", "BuySell", null, new { @class = "btn-bluegrd" })
+    </h2>
+
+    <div class="largescr">
+        <table class="table table-striped tbldata">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Inv.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Inv.IRR)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccInv.BuyDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccInv.LockStartDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BuyVal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PctChg)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CurVal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccInv.ForSale)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccInv.Discount)
+                    </th>
+                </tr>
+            </thead>
+            @{ decimal totBuyVal = 0, totCurVal = 0;}
+
+            @foreach (var item in Model)
+            {
+                totBuyVal += item.BuyVal;
+                totCurVal += item.CurVal;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Inv.Title)
+                    </td>
+                    <td>
+                        @(item.Inv.IRR.Value.ToString("F2") + " %")
+                    </td>
+                    <td>
+                        @item.AccInv.BuyDate.Value.ToString("yyyy-M-d")
+                    </td>
+                    <td>
+                        @(item.AccInv.LockStartDate.HasValue ? item.AccInv.LockStartDate.Value.ToString("yyyy-M-d") : "")
+                    </td>
+                    <td>
+                        @item.BuyVal.ToString("C2")
+                    </td>
+                    <td>
+                        @item.PctChg.ToString("P")
+                    </td>
+                    <td>
+                        @item.CurVal.ToString("C2")
+                    </td>
+                    <td>
+                        @if (item.AccInv.ForSale.Value)
+                        { <text>For Sale</text> }
+                    </td>
+                    <td>
+                        @if (item.AccInv.ForSale.Value)
+                        { @((item.AccInv.Discount.Value / 100m).ToString("P"));
+                        }
+                    </td>
+                </tr>}
+
+            @if (Model != null && Model.Count() == 0)
+            {
+                <tr><td colspan="9">No Investments</td></tr>}
+            <tfoot>
+                <tr><td /><td /><td /><td align="center"><b>Total</b></td><th>@totBuyVal.ToString("C2")</th><th>@((totCurVal / totBuyVal - 1m).ToString("P"))</th><th>@totCurVal.ToString("C2")</th><td /><td /></tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="smallscr">
+        <table class="table table-striped tbldata">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Inv.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccInv.BuyDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BuyVal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PctChg)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CurVal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccInv.ForSale)
+                    </th>
+                </tr>
+            </thead>
+            @{ totBuyVal = 0; totCurVal = 0;}
+
+            @foreach (var item in Model)
+            {
+                totBuyVal += item.BuyVal;
+                totCurVal += item.CurVal;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Inv.Title)
+                    </td>
+                    <td>
+                        @item.AccInv.BuyDate.Value.ToString("yyyy-M-d")
+                    </td>
+                    <td>
+                        @item.BuyVal.ToString("C2")
+                    </td>
+                    <td>
+                        @item.PctChg.ToString("P")
+                    </td>
+                    <td>
+                        @item.CurVal.ToString("C2")
+                    </td>
+                    <td>
+                        @if (item.AccInv.ForSale.Value)
+                        {<text>For Sale<br/></text> @((item.AccInv.Discount.Value / 100m).ToString("P"))}
+                    </td>
+                </tr>}
+
+            @if (Model != null && Model.Count() == 0)
+            {
+                <tr><td colspan="6">No Investments</td></tr>}
+            <tfoot>
+                <tr><td /><td align="center"><b>Total</b></td><th>@totBuyVal.ToString("C2")</th><th>@((totCurVal / totBuyVal - 1m).ToString("P"))</th><th>@totCurVal.ToString("C2")</th><td /></tr>
+            </tfoot>
+        </table>
+    </div>
+
+
+
+
+
+
+    <center>
+        <table>
+            <tr><td id="donutchart" valign="top"></td><td class="largescr" id="line_top_x1" valign="top" style="padding-top:40px;padding-left:30px"></td></tr>
+            <tr><td class="smallscr" id="line_top_x2" valign="top" style="padding-top:40px"></td><td></td></tr>
+        </table>
+    </center>
+    <!--
+    <div id="donutchart" style="width: 800px; height: 400px;"></div>
+    <div id="line_top_x"></div>
+        -->
+    </div>
+<script>
+        doSize = function () {
+            drawDonutChart();
+            drawLineChart();
+        }
+
+        window.onresize = doSize;
+</script>

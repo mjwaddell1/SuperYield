@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<style>
+    h1, h2, h3, h4 {
+        font-family: HelNeueLight, Arial
+    }
+</style>
+
+@*@{ Session["AccessOK"] = null; }*@
+
+@if (Request["DEV"] != null)
+{ Session["AccessOK"] = 1; }
+
+@if (Request["DEV"] != null && Request["DEV"]=="0")
+{ Session["AccessOK"] = null; }
+
+
+@if (Session["AccessOK"] != null || Request.IsLocal)
+{
+    if (Request["INV"] != null)
+    {
+        ViewBag.Title = "Funds";
+        <div class="scrsmall">
+            @Html.Partial("../InvPages/Inv" + Request["INV"] + "SM")
+        </div>
+        <div class="scrmedium">
+            @Html.Partial("../InvPages/Inv" + Request["INV"] + "Med")
+        </div>
+        <div class="scrlarge">
+            @Html.Partial("../InvPages/Inv" + Request["INV"] + "LG")
+        </div>
+    }
+    else
+    {
+        <div class="scrsmall">
+            @Html.Partial("IndexSM")
+        </div>
+        <div class="scrmedium">
+            @Html.Partial("IndexMed")
+        </div>
+        <div class="scrlarge">
+            @Html.Partial("IndexLG")
+        </div>
+    }
+    }
+else
+{
+    <style>
+        .btn-custom {
+            color: indianred;
+            background-color: bisque;
+            border-color: transparent;
+            border-radius: 20vw;
+            height:30px;
+        }
+
+            .btn-custom:hover, .btn-custom4:focus, .btn-custom4:active, .btn-custom4.active, .open > .dropdown-toggle.btn-custom {
+                color:mediumseagreen;
+                background-color:antiquewhite;
+                border-color: transparent;
+            }
+    </style>
+
+    <table style="background-image:url('../../Content/MountainBlueWide.jpg');height:400px;width:100%;background-position:left">
+        <tr>
+            <td align="center" valign="top" style="font-size:x-large;font-family:HelNeueLight, Arial;color:ghostwhite;background-image:linear-gradient(royalblue, transparent)">
+                <table style="height:80px;width:50%;" onclick="window.location.href='/Home/Index?Dev=1'"><tr><td>&nbsp;</td></tr></table>
+                Put Your Money To Work<br /><br /><br />
+                <img src="../../Content/SYLogoTreeFull.png" style="width:175px;" />
+            </td>
+        </tr>
+    </table>
+    <!--<img src="~/Content/MountainBlue8x6.jpg" style="width:100%"/>-->
+
+
+    <center>
+        <div style="padding:15px;background-color:indianred;color:navajowhite">
+            <h4 style="font-weight:900;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size:20px">
+                This site is under development.<br /> Super Yield is not currently accepting new investors.
+                <br /><br />If you would like to be notified when Super Yield goes live,<br /> please send us an email.<br /><br />
+                <a class="btn-redgrd" style="font-size:medium;font-weight:600; border-color:transparent;border-radius:15px;padding:10px" href="mailto:Info@SuperYield.net" target="_blank"><span style="font-size:large;padding:0;margin:0">&#9993;</span> Info@SuperYield.net</a>
+            </h4>
+        </div>
+    </center>
+    <br /><br />
+}
+

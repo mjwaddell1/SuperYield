@@ -1,0 +1,1616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="YieldDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountInvestment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="InvestmentId" Type="int" />
+          <Property Name="BuyAmt" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="BuyDate" Type="datetime" />
+          <Property Name="SellDate" Type="datetime" />
+          <Property Name="ForSale" Type="bit" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Value" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="ValueDate" Type="datetime" />
+          <Property Name="Discount" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="LockStartDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="FromAccount" Type="int" />
+          <Property Name="FromInvestment" Type="int" />
+          <Property Name="ToAccount" Type="int" />
+          <Property Name="ToInvestment" Type="int" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Cost" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="Discount" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountValueHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="Value" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="ValueDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ContactUs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="FirstName" Type="varchar" MaxLength="128" />
+          <Property Name="LastName" Type="varchar" MaxLength="128" />
+          <Property Name="Email" Type="varchar" MaxLength="128" />
+          <Property Name="Phone" Type="varchar" MaxLength="128" />
+          <Property Name="Title" Type="varchar" MaxLength="128" />
+          <Property Name="Msg" Type="varchar" MaxLength="1000" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="varchar" MaxLength="100" />
+          <Property Name="Answer" Type="varchar" MaxLength="500" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Investment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="2500" />
+          <Property Name="IRR" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="InceptionDate" Type="datetime" />
+          <Property Name="LockPeriodDays" Type="int" />
+          <Property Name="Closed" Type="bit" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvestmentHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvestmentId" Type="int" />
+          <Property Name="InvestmentValue" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="InvestorCount" Type="int" />
+          <Property Name="ValueDate" Type="datetime" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="TotalInvestment" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvestmentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="FirstName" Type="varchar" MaxLength="128" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="128" />
+          <Property Name="LastName" Type="varchar" MaxLength="128" />
+          <Property Name="Company" Type="varchar" MaxLength="128" />
+          <Property Name="Addr1" Type="varchar" MaxLength="128" />
+          <Property Name="Addr2" Type="varchar" MaxLength="128" />
+          <Property Name="City" Type="varchar" MaxLength="128" />
+          <Property Name="State" Type="char" MaxLength="2" />
+          <Property Name="Zip" Type="varchar" MaxLength="12" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="Phone1" Type="varchar" MaxLength="15" />
+          <Property Name="Phone2" Type="varchar" MaxLength="15" />
+          <Property Name="PaymentMethod" Type="int" />
+          <Property Name="BankRouting" Type="varchar" MaxLength="15" />
+          <Property Name="BankAccount" Type="varchar" MaxLength="50" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMsg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Title" Type="varchar" MaxLength="128" />
+          <Property Name="Msg" Type="varchar" MaxLength="1000" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AccountIn__Accou__1FB8AE52">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountInvestment" Type="Self.AccountInvestment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountInvestment">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountIn__Creat__22951AFD">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountInvestment" Type="Self.AccountInvestment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountInvestment">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountIn__Inves__20ACD28B">
+          <End Role="Investment" Type="Self.Investment" Multiplicity="0..1" />
+          <End Role="AccountInvestment" Type="Self.AccountInvestment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountInvestment">
+              <PropertyRef Name="InvestmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountIn__Updat__247D636F">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountInvestment" Type="Self.AccountInvestment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountInvestment">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountTr__Creat__505BE5AD">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountTr__FromA__4C8B54C9">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="FromAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountTr__FromI__4D7F7902">
+          <End Role="Investment" Type="Self.Investment" Multiplicity="0..1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="FromInvestment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountTr__ToAcc__4E739D3B">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="ToAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountTr__ToInv__4F67C174">
+          <End Role="Investment" Type="Self.Investment" Multiplicity="0..1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="ToInvestment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountTr__Updat__52442E1F">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountTra__Type__4B973090">
+          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="0..1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountVa__Accou__1E8F7FEF">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountValueHistory" Type="Self.AccountValueHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountValueHistory">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountVa__Creat__2077C861">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountValueHistory" Type="Self.AccountValueHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountValueHistory">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountVa__Updat__226010D3">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountValueHistory" Type="Self.AccountValueHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountValueHistory">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactUs__UserI__09C96D33">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="ContactUs" Type="Self.ContactUs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContactUs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FAQ__CreateUser__6F1576F7">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="FAQ" Type="Self.FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FAQ">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FAQ__UpdateUser__70FDBF69">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="FAQ" Type="Self.FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FAQ">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investmen__Creat__1AF3F935">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="InvestmentHistory" Type="Self.InvestmentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvestmentHistory">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investmen__Creat__6A50C1DA">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Investment" Type="Self.Investment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Investment">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investmen__Inves__19FFD4FC">
+          <End Role="Investment" Type="Self.Investment" Multiplicity="0..1" />
+          <End Role="InvestmentHistory" Type="Self.InvestmentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvestmentHistory">
+              <PropertyRef Name="InvestmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investmen__Updat__1CDC41A7">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="InvestmentHistory" Type="Self.InvestmentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvestmentHistory">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investmen__Updat__6C390A4C">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Investment" Type="Self.Investment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Investment">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investment__Type__68687968">
+          <End Role="InvestmentType" Type="Self.InvestmentType" Multiplicity="0..1" />
+          <End Role="Investment" Type="Self.Investment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvestmentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Investment">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserAccou__Creat__63A3C44B">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="UserAccount1" Type="Self.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccount1">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserAccou__Payme__62AFA012">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="PaymentMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserAccou__Updat__658C0CBD">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="UserAccount1" Type="Self.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccount1">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserMsg__CreateU__0D99FE17">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="UserMsg" Type="Self.UserMsg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMsg">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserMsg__UpdateU__0F824689">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="UserMsg" Type="Self.UserMsg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMsg">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YieldDBModelStoreContainer">
+          <EntitySet Name="AccountInvestment" EntityType="Self.AccountInvestment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountStatus" EntityType="Self.AccountStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountTransaction" EntityType="Self.AccountTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountValueHistory" EntityType="Self.AccountValueHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactUs" EntityType="Self.ContactUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAQ" EntityType="Self.FAQ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Investment" EntityType="Self.Investment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvestmentHistory" EntityType="Self.InvestmentHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvestmentType" EntityType="Self.InvestmentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMsg" EntityType="Self.UserMsg" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AccountIn__Accou__1FB8AE52" Association="Self.FK__AccountIn__Accou__1FB8AE52">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountInvestment" EntitySet="AccountInvestment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountIn__Creat__22951AFD" Association="Self.FK__AccountIn__Creat__22951AFD">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountInvestment" EntitySet="AccountInvestment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountIn__Inves__20ACD28B" Association="Self.FK__AccountIn__Inves__20ACD28B">
+            <End Role="Investment" EntitySet="Investment" />
+            <End Role="AccountInvestment" EntitySet="AccountInvestment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountIn__Updat__247D636F" Association="Self.FK__AccountIn__Updat__247D636F">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountInvestment" EntitySet="AccountInvestment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountTr__Creat__505BE5AD" Association="Self.FK__AccountTr__Creat__505BE5AD">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountTr__FromA__4C8B54C9" Association="Self.FK__AccountTr__FromA__4C8B54C9">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountTr__FromI__4D7F7902" Association="Self.FK__AccountTr__FromI__4D7F7902">
+            <End Role="Investment" EntitySet="Investment" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountTr__ToAcc__4E739D3B" Association="Self.FK__AccountTr__ToAcc__4E739D3B">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountTr__ToInv__4F67C174" Association="Self.FK__AccountTr__ToInv__4F67C174">
+            <End Role="Investment" EntitySet="Investment" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountTr__Updat__52442E1F" Association="Self.FK__AccountTr__Updat__52442E1F">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountTra__Type__4B973090" Association="Self.FK__AccountTra__Type__4B973090">
+            <End Role="TransactionType" EntitySet="TransactionType" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountVa__Accou__1E8F7FEF" Association="Self.FK__AccountVa__Accou__1E8F7FEF">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountValueHistory" EntitySet="AccountValueHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountVa__Creat__2077C861" Association="Self.FK__AccountVa__Creat__2077C861">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountValueHistory" EntitySet="AccountValueHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountVa__Updat__226010D3" Association="Self.FK__AccountVa__Updat__226010D3">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountValueHistory" EntitySet="AccountValueHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactUs__UserI__09C96D33" Association="Self.FK__ContactUs__UserI__09C96D33">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="ContactUs" EntitySet="ContactUs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FAQ__CreateUser__6F1576F7" Association="Self.FK__FAQ__CreateUser__6F1576F7">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="FAQ" EntitySet="FAQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FAQ__UpdateUser__70FDBF69" Association="Self.FK__FAQ__UpdateUser__70FDBF69">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="FAQ" EntitySet="FAQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investmen__Creat__1AF3F935" Association="Self.FK__Investmen__Creat__1AF3F935">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="InvestmentHistory" EntitySet="InvestmentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investmen__Creat__6A50C1DA" Association="Self.FK__Investmen__Creat__6A50C1DA">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Investment" EntitySet="Investment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investmen__Inves__19FFD4FC" Association="Self.FK__Investmen__Inves__19FFD4FC">
+            <End Role="Investment" EntitySet="Investment" />
+            <End Role="InvestmentHistory" EntitySet="InvestmentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investmen__Updat__1CDC41A7" Association="Self.FK__Investmen__Updat__1CDC41A7">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="InvestmentHistory" EntitySet="InvestmentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investmen__Updat__6C390A4C" Association="Self.FK__Investmen__Updat__6C390A4C">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Investment" EntitySet="Investment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investment__Type__68687968" Association="Self.FK__Investment__Type__68687968">
+            <End Role="InvestmentType" EntitySet="InvestmentType" />
+            <End Role="Investment" EntitySet="Investment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserAccou__Creat__63A3C44B" Association="Self.FK__UserAccou__Creat__63A3C44B">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserAccount1" EntitySet="UserAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserAccou__Payme__62AFA012" Association="Self.FK__UserAccou__Payme__62AFA012">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="UserAccount" EntitySet="UserAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserAccou__Updat__658C0CBD" Association="Self.FK__UserAccou__Updat__658C0CBD">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserAccount1" EntitySet="UserAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserMsg__CreateU__0D99FE17" Association="Self.FK__UserMsg__CreateU__0D99FE17">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserMsg" EntitySet="UserMsg" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserMsg__UpdateU__0F824689" Association="Self.FK__UserMsg__UpdateU__0F824689">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserMsg" EntitySet="UserMsg" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YieldDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccountInvestment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="InvestmentId" Type="Int32" />
+          <Property Name="BuyDate" Type="DateTime" Precision="3" />
+          <Property Name="SellDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK__AccountIn__Accou__73DA2C14" FromRole="AccountInvestment" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAccount1" Relationship="Self.FK__AccountIn__Creat__75C27486" FromRole="AccountInvestment" ToRole="UserAccount" />
+          <NavigationProperty Name="Investment" Relationship="Self.FK__AccountIn__Inves__74CE504D" FromRole="AccountInvestment" ToRole="Investment" />
+          <NavigationProperty Name="UserAccount2" Relationship="Self.FK__AccountIn__Updat__77AABCF8" FromRole="AccountInvestment" ToRole="UserAccount" />
+          <Property Name="ForSale" Type="Boolean" />
+          <Property Name="BuyAmt" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Value" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ValueDate" Type="DateTime" Precision="3" />
+          <Property Name="Discount" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="LockStartDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="FromAccount" Type="Int32" />
+          <Property Name="FromInvestment" Type="Int32" />
+          <Property Name="ToAccount" Type="Int32" />
+          <Property Name="ToInvestment" Type="Int32" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Investment" Relationship="Self.FK__AccountTr__FromI__7C6F7215" FromRole="AccountTransaction" ToRole="Investment" />
+          <NavigationProperty Name="Investment1" Relationship="Self.FK__AccountTr__ToInv__7E57BA87" FromRole="AccountTransaction" ToRole="Investment" />
+          <Property Name="Cost" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Discount" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TransactionType" Relationship="YieldDBModel.FK__AccountTra__Type__4B973090" FromRole="AccountTransaction" ToRole="TransactionType" />
+        </EntityType>
+        <EntityType Name="ContactUs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Msg" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK__ContactUs__UserI__09C96D33" FromRole="ContactUs" ToRole="UserAccount" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Answer" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK__FAQ__CreateUser__6F1576F7" FromRole="FAQ" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAccount1" Relationship="Self.FK__FAQ__UpdateUser__70FDBF69" FromRole="FAQ" ToRole="UserAccount" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Investment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="IRR" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="InceptionDate" Type="DateTime" Precision="3" />
+          <Property Name="LockPeriodDays" Type="Int32" />
+          <Property Name="Closed" Type="Boolean" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AccountInvestment" Relationship="Self.FK__AccountIn__Inves__74CE504D" FromRole="Investment" ToRole="AccountInvestment" />
+          <NavigationProperty Name="AccountTransaction" Relationship="Self.FK__AccountTr__FromI__7C6F7215" FromRole="Investment" ToRole="AccountTransaction" />
+          <NavigationProperty Name="AccountTransaction1" Relationship="Self.FK__AccountTr__ToInv__7E57BA87" FromRole="Investment" ToRole="AccountTransaction" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK__Investmen__Creat__6A50C1DA" FromRole="Investment" ToRole="UserAccount" />
+          <NavigationProperty Name="InvestmentHistory" Relationship="Self.FK__Investmen__Inves__041093DD" FromRole="Investment" ToRole="InvestmentHistory" />
+          <NavigationProperty Name="UserAccount1" Relationship="Self.FK__Investmen__Updat__6C390A4C" FromRole="Investment" ToRole="UserAccount" />
+          <NavigationProperty Name="InvestmentType" Relationship="Self.FK__Investment__Type__68687968" FromRole="Investment" ToRole="InvestmentType" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvestmentHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvestmentId" Type="Int32" />
+          <Property Name="InvestmentValue" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="InvestorCount" Type="Int32" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Investment" Relationship="Self.FK__Investmen__Inves__041093DD" FromRole="InvestmentHistory" ToRole="Investment" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK__Investmen__Creat__0504B816" FromRole="InvestmentHistory" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAccount1" Relationship="Self.FK__Investmen__Updat__06ED0088" FromRole="InvestmentHistory" ToRole="UserAccount" />
+          <Property Name="ValueDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalInvestment" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvestmentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Investment" Relationship="Self.FK__Investment__Type__68687968" FromRole="InvestmentType" ToRole="Investment" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK__UserAccou__Payme__62AFA012" FromRole="PaymentMethod" ToRole="UserAccount" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Addr1" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Addr2" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentMethod" Type="Int32" />
+          <Property Name="BankRouting" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="BankAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AccountInvestment" Relationship="Self.FK__AccountIn__Accou__73DA2C14" FromRole="UserAccount" ToRole="AccountInvestment" />
+          <NavigationProperty Name="AccountInvestment1" Relationship="Self.FK__AccountIn__Creat__75C27486" FromRole="UserAccount" ToRole="AccountInvestment" />
+          <NavigationProperty Name="AccountInvestment2" Relationship="Self.FK__AccountIn__Updat__77AABCF8" FromRole="UserAccount" ToRole="AccountInvestment" />
+          <NavigationProperty Name="AccountTransaction1" Relationship="Self.FK__AccountTr__Creat__7F4BDEC0" FromRole="UserAccount" ToRole="AccountTransaction" />
+          <NavigationProperty Name="AccountTransaction2" Relationship="Self.FK__AccountTr__FromA__7B7B4DDC" FromRole="UserAccount" ToRole="AccountTransaction" />
+          <NavigationProperty Name="AccountTransaction3" Relationship="Self.FK__AccountTr__ToAcc__7D63964E" FromRole="UserAccount" ToRole="AccountTransaction" />
+          <NavigationProperty Name="AccountTransaction4" Relationship="Self.FK__AccountTr__Updat__01342732" FromRole="UserAccount" ToRole="AccountTransaction" />
+          <NavigationProperty Name="ContactUs" Relationship="Self.FK__ContactUs__UserI__09C96D33" FromRole="UserAccount" ToRole="ContactUs" />
+          <NavigationProperty Name="FAQ" Relationship="Self.FK__FAQ__CreateUser__6F1576F7" FromRole="UserAccount" ToRole="FAQ" />
+          <NavigationProperty Name="FAQ1" Relationship="Self.FK__FAQ__UpdateUser__70FDBF69" FromRole="UserAccount" ToRole="FAQ" />
+          <NavigationProperty Name="Investment" Relationship="Self.FK__Investmen__Creat__6A50C1DA" FromRole="UserAccount" ToRole="Investment" />
+          <NavigationProperty Name="Investment1" Relationship="Self.FK__Investmen__Updat__6C390A4C" FromRole="UserAccount" ToRole="Investment" />
+          <NavigationProperty Name="InvestmentHistory" Relationship="Self.FK__Investmen__Creat__0504B816" FromRole="UserAccount" ToRole="InvestmentHistory" />
+          <NavigationProperty Name="InvestmentHistory1" Relationship="Self.FK__Investmen__Updat__06ED0088" FromRole="UserAccount" ToRole="InvestmentHistory" />
+          <NavigationProperty Name="PaymentMethod1" Relationship="Self.FK__UserAccou__Payme__62AFA012" FromRole="UserAccount" ToRole="PaymentMethod" />
+          <NavigationProperty Name="UserAccount1" Relationship="Self.FK__UserAccou__Creat__63A3C44B" FromRole="UserAccount" ToRole="UserAccount1" />
+          <NavigationProperty Name="UserAccount2" Relationship="Self.FK__UserAccou__Creat__63A3C44B" FromRole="UserAccount1" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAccount11" Relationship="Self.FK__UserAccou__Updat__658C0CBD" FromRole="UserAccount" ToRole="UserAccount1" />
+          <NavigationProperty Name="UserAccount3" Relationship="Self.FK__UserAccou__Updat__658C0CBD" FromRole="UserAccount1" ToRole="UserAccount" />
+          <NavigationProperty Name="UserMsg" Relationship="Self.FK__UserMsg__CreateU__0D99FE17" FromRole="UserAccount" ToRole="UserMsg" />
+          <NavigationProperty Name="UserMsg1" Relationship="Self.FK__UserMsg__UpdateU__0F824689" FromRole="UserAccount" ToRole="UserMsg" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AccountValueHistory" Relationship="YieldDBModel.FK__AccountVa__Accou__1E8F7FEF" FromRole="UserAccount" ToRole="AccountValueHistory" />
+          <NavigationProperty Name="AccountValueHistory1" Relationship="YieldDBModel.FK__AccountVa__Creat__2077C861" FromRole="UserAccount" ToRole="AccountValueHistory" />
+          <NavigationProperty Name="AccountValueHistory2" Relationship="YieldDBModel.FK__AccountVa__Updat__226010D3" FromRole="UserAccount" ToRole="AccountValueHistory" />
+        </EntityType>
+        <EntityType Name="UserMsg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Msg" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK__UserMsg__CreateU__0D99FE17" FromRole="UserMsg" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAccount1" Relationship="Self.FK__UserMsg__UpdateU__0F824689" FromRole="UserMsg" ToRole="UserAccount" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AccountIn__Accou__73DA2C14">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountInvestment" Type="Self.AccountInvestment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountInvestment">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountIn__Creat__75C27486">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountInvestment" Type="Self.AccountInvestment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountInvestment">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountIn__Inves__74CE504D">
+          <End Role="Investment" Type="Self.Investment" Multiplicity="0..1" />
+          <End Role="AccountInvestment" Type="Self.AccountInvestment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountInvestment">
+              <PropertyRef Name="InvestmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountIn__Updat__77AABCF8">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountInvestment" Type="Self.AccountInvestment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountInvestment">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountTr__Creat__7F4BDEC0">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountTr__FromA__7B7B4DDC">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="FromAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountTr__FromI__7C6F7215">
+          <End Role="Investment" Type="Self.Investment" Multiplicity="0..1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="FromInvestment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountTr__ToAcc__7D63964E">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="ToAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountTr__ToInv__7E57BA87">
+          <End Role="Investment" Type="Self.Investment" Multiplicity="0..1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="ToInvestment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AccountTr__Updat__01342732">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactUs__UserI__09C96D33">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="ContactUs" Type="Self.ContactUs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContactUs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FAQ__CreateUser__6F1576F7">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="FAQ" Type="Self.FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FAQ">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FAQ__UpdateUser__70FDBF69">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="FAQ" Type="Self.FAQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FAQ">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investmen__Creat__6A50C1DA">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Investment" Type="Self.Investment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Investment">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investmen__Inves__041093DD">
+          <End Role="Investment" Type="Self.Investment" Multiplicity="0..1" />
+          <End Role="InvestmentHistory" Type="Self.InvestmentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvestmentHistory">
+              <PropertyRef Name="InvestmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investmen__Updat__6C390A4C">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Investment" Type="Self.Investment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Investment">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investment__Type__68687968">
+          <End Role="InvestmentType" Type="Self.InvestmentType" Multiplicity="0..1" />
+          <End Role="Investment" Type="Self.Investment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvestmentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Investment">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investmen__Creat__0504B816">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="InvestmentHistory" Type="Self.InvestmentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvestmentHistory">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investmen__Updat__06ED0088">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="InvestmentHistory" Type="Self.InvestmentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvestmentHistory">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserAccou__Payme__62AFA012">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="PaymentMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserAccou__Creat__63A3C44B">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="UserAccount1" Type="Self.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccount1">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserAccou__Updat__658C0CBD">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="UserAccount1" Type="Self.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccount1">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserMsg__CreateU__0D99FE17">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="UserMsg" Type="Self.UserMsg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMsg">
+              <PropertyRef Name="CreateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserMsg__UpdateU__0F824689">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="UserMsg" Type="Self.UserMsg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMsg">
+              <PropertyRef Name="UpdateUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountInvestment" EntityType="Self.AccountInvestment" />
+          <EntitySet Name="AccountTransaction" EntityType="Self.AccountTransaction" />
+          <EntitySet Name="ContactUs" EntityType="Self.ContactUs" />
+          <EntitySet Name="FAQ" EntityType="Self.FAQ" />
+          <EntitySet Name="Investment" EntityType="Self.Investment" />
+          <EntitySet Name="InvestmentHistory" EntityType="Self.InvestmentHistory" />
+          <EntitySet Name="InvestmentType" EntityType="Self.InvestmentType" />
+          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" />
+          <EntitySet Name="UserAccount" EntityType="Self.UserAccount" />
+          <EntitySet Name="UserMsg" EntityType="Self.UserMsg" />
+          <AssociationSet Name="FK__AccountIn__Accou__73DA2C14" Association="Self.FK__AccountIn__Accou__73DA2C14">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountInvestment" EntitySet="AccountInvestment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountIn__Creat__75C27486" Association="Self.FK__AccountIn__Creat__75C27486">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountInvestment" EntitySet="AccountInvestment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountIn__Inves__74CE504D" Association="Self.FK__AccountIn__Inves__74CE504D">
+            <End Role="Investment" EntitySet="Investment" />
+            <End Role="AccountInvestment" EntitySet="AccountInvestment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountIn__Updat__77AABCF8" Association="Self.FK__AccountIn__Updat__77AABCF8">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountInvestment" EntitySet="AccountInvestment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountTr__Creat__7F4BDEC0" Association="Self.FK__AccountTr__Creat__7F4BDEC0">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountTr__FromA__7B7B4DDC" Association="Self.FK__AccountTr__FromA__7B7B4DDC">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountTr__FromI__7C6F7215" Association="Self.FK__AccountTr__FromI__7C6F7215">
+            <End Role="Investment" EntitySet="Investment" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountTr__ToAcc__7D63964E" Association="Self.FK__AccountTr__ToAcc__7D63964E">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountTr__ToInv__7E57BA87" Association="Self.FK__AccountTr__ToInv__7E57BA87">
+            <End Role="Investment" EntitySet="Investment" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountTr__Updat__01342732" Association="Self.FK__AccountTr__Updat__01342732">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactUs__UserI__09C96D33" Association="Self.FK__ContactUs__UserI__09C96D33">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="ContactUs" EntitySet="ContactUs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FAQ__CreateUser__6F1576F7" Association="Self.FK__FAQ__CreateUser__6F1576F7">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="FAQ" EntitySet="FAQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FAQ__UpdateUser__70FDBF69" Association="Self.FK__FAQ__UpdateUser__70FDBF69">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="FAQ" EntitySet="FAQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investmen__Creat__6A50C1DA" Association="Self.FK__Investmen__Creat__6A50C1DA">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Investment" EntitySet="Investment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investmen__Inves__041093DD" Association="Self.FK__Investmen__Inves__041093DD">
+            <End Role="Investment" EntitySet="Investment" />
+            <End Role="InvestmentHistory" EntitySet="InvestmentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investmen__Updat__6C390A4C" Association="Self.FK__Investmen__Updat__6C390A4C">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Investment" EntitySet="Investment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investment__Type__68687968" Association="Self.FK__Investment__Type__68687968">
+            <End Role="InvestmentType" EntitySet="InvestmentType" />
+            <End Role="Investment" EntitySet="Investment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investmen__Creat__0504B816" Association="Self.FK__Investmen__Creat__0504B816">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="InvestmentHistory" EntitySet="InvestmentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investmen__Updat__06ED0088" Association="Self.FK__Investmen__Updat__06ED0088">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="InvestmentHistory" EntitySet="InvestmentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserAccou__Payme__62AFA012" Association="Self.FK__UserAccou__Payme__62AFA012">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="UserAccount" EntitySet="UserAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserAccou__Creat__63A3C44B" Association="Self.FK__UserAccou__Creat__63A3C44B">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserAccount1" EntitySet="UserAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserAccou__Updat__658C0CBD" Association="Self.FK__UserAccou__Updat__658C0CBD">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserAccount1" EntitySet="UserAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserMsg__CreateU__0D99FE17" Association="Self.FK__UserMsg__CreateU__0D99FE17">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserMsg" EntitySet="UserMsg" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserMsg__UpdateU__0F824689" Association="Self.FK__UserMsg__UpdateU__0F824689">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="UserMsg" EntitySet="UserMsg" />
+          </AssociationSet>
+          <EntitySet Name="TransactionType" EntityType="YieldDBModel.TransactionType" />
+          <EntitySet Name="AccountValueHistory" EntityType="YieldDBModel.AccountValueHistory" />
+          <AssociationSet Name="FK__AccountTra__Type__4B973090" Association="YieldDBModel.FK__AccountTra__Type__4B973090">
+            <End Role="TransactionType" EntitySet="TransactionType" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountVa__Accou__1E8F7FEF" Association="YieldDBModel.FK__AccountVa__Accou__1E8F7FEF">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountValueHistory" EntitySet="AccountValueHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountVa__Creat__2077C861" Association="YieldDBModel.FK__AccountVa__Creat__2077C861">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountValueHistory" EntitySet="AccountValueHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AccountVa__Updat__226010D3" Association="YieldDBModel.FK__AccountVa__Updat__226010D3">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="AccountValueHistory" EntitySet="AccountValueHistory" />
+          </AssociationSet>
+          <EntitySet Name="AccountStatus" EntityType="YieldDBModel.AccountStatus" />
+        </EntityContainer>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AccountTransaction" Relationship="YieldDBModel.FK__AccountTra__Type__4B973090" FromRole="TransactionType" ToRole="AccountTransaction" />
+        </EntityType>
+        <EntityType Name="AccountValueHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ValueDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserAccount" Relationship="YieldDBModel.FK__AccountVa__Accou__1E8F7FEF" FromRole="AccountValueHistory" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAccount1" Relationship="YieldDBModel.FK__AccountVa__Creat__2077C861" FromRole="AccountValueHistory" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAccount2" Relationship="YieldDBModel.FK__AccountVa__Updat__226010D3" FromRole="AccountValueHistory" ToRole="UserAccount" />
+        </EntityType>
+        <Association Name="FK__AccountTra__Type__4B973090">
+          <End Type="YieldDBModel.TransactionType" Role="TransactionType" Multiplicity="0..1" />
+          <End Type="YieldDBModel.AccountTransaction" Role="AccountTransaction" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__AccountVa__Accou__1E8F7FEF">
+          <End Type="YieldDBModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+          <End Type="YieldDBModel.AccountValueHistory" Role="AccountValueHistory" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__AccountVa__Creat__2077C861">
+          <End Type="YieldDBModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+          <End Type="YieldDBModel.AccountValueHistory" Role="AccountValueHistory" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__AccountVa__Updat__226010D3">
+          <End Type="YieldDBModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+          <End Type="YieldDBModel.AccountValueHistory" Role="AccountValueHistory" Multiplicity="*" />
+        </Association>
+        <EntityType Name="AccountStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YieldDBModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="AccountInvestment">
+            <EntityTypeMapping TypeName="YieldDBModel.AccountInvestment">
+              <MappingFragment StoreEntitySet="AccountInvestment">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LockStartDate" ColumnName="LockStartDate" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="BuyAmt" ColumnName="BuyAmt" />
+                <ScalarProperty Name="ForSale" ColumnName="ForSale" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="InvestmentId" ColumnName="InvestmentId" />
+                <ScalarProperty Name="BuyDate" ColumnName="BuyDate" />
+                <ScalarProperty Name="SellDate" ColumnName="SellDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountTransaction">
+            <EntityTypeMapping TypeName="YieldDBModel.AccountTransaction">
+              <MappingFragment StoreEntitySet="AccountTransaction">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="FromAccount" ColumnName="FromAccount" />
+                <ScalarProperty Name="FromInvestment" ColumnName="FromInvestment" />
+                <ScalarProperty Name="ToAccount" ColumnName="ToAccount" />
+                <ScalarProperty Name="ToInvestment" ColumnName="ToInvestment" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactUs">
+            <EntityTypeMapping TypeName="YieldDBModel.ContactUs">
+              <MappingFragment StoreEntitySet="ContactUs">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Msg" ColumnName="Msg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAQ">
+            <EntityTypeMapping TypeName="YieldDBModel.FAQ">
+              <MappingFragment StoreEntitySet="FAQ">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Investment">
+            <EntityTypeMapping TypeName="YieldDBModel.Investment">
+              <MappingFragment StoreEntitySet="Investment">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IRR" ColumnName="IRR" />
+                <ScalarProperty Name="InceptionDate" ColumnName="InceptionDate" />
+                <ScalarProperty Name="LockPeriodDays" ColumnName="LockPeriodDays" />
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvestmentHistory">
+            <EntityTypeMapping TypeName="YieldDBModel.InvestmentHistory">
+              <MappingFragment StoreEntitySet="InvestmentHistory">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="TotalInvestment" ColumnName="TotalInvestment" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="InvestmentId" ColumnName="InvestmentId" />
+                <ScalarProperty Name="InvestmentValue" ColumnName="InvestmentValue" />
+                <ScalarProperty Name="InvestorCount" ColumnName="InvestorCount" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvestmentType">
+            <EntityTypeMapping TypeName="YieldDBModel.InvestmentType">
+              <MappingFragment StoreEntitySet="InvestmentType">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethod">
+            <EntityTypeMapping TypeName="YieldDBModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccount">
+            <EntityTypeMapping TypeName="YieldDBModel.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Addr1" ColumnName="Addr1" />
+                <ScalarProperty Name="Addr2" ColumnName="Addr2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="BankRouting" ColumnName="BankRouting" />
+                <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMsg">
+            <EntityTypeMapping TypeName="YieldDBModel.UserMsg">
+              <MappingFragment StoreEntitySet="UserMsg">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Msg" ColumnName="Msg" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionType">
+            <EntityTypeMapping TypeName="YieldDBModel.TransactionType">
+              <MappingFragment StoreEntitySet="TransactionType">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountValueHistory">
+            <EntityTypeMapping TypeName="YieldDBModel.AccountValueHistory">
+              <MappingFragment StoreEntitySet="AccountValueHistory">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK__AccountTra__Type__4B973090" TypeName="YieldDBModel.FK__AccountTra__Type__4B973090" StoreEntitySet="AccountTransaction">
+            <EndProperty Name="AccountTransaction">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="TransactionType">
+              <ScalarProperty Name="Id" ColumnName="Type" />
+            </EndProperty>
+            <Condition ColumnName="Type" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__AccountVa__Accou__1E8F7FEF" TypeName="YieldDBModel.FK__AccountVa__Accou__1E8F7FEF" StoreEntitySet="AccountValueHistory">
+            <EndProperty Name="AccountValueHistory">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="UserAccount">
+              <ScalarProperty Name="Id" ColumnName="AccountId" />
+            </EndProperty>
+            <Condition ColumnName="AccountId" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__AccountVa__Creat__2077C861" TypeName="YieldDBModel.FK__AccountVa__Creat__2077C861" StoreEntitySet="AccountValueHistory">
+            <EndProperty Name="AccountValueHistory">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="UserAccount">
+              <ScalarProperty Name="Id" ColumnName="CreateUser" />
+            </EndProperty>
+            <Condition ColumnName="CreateUser" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__AccountVa__Updat__226010D3" TypeName="YieldDBModel.FK__AccountVa__Updat__226010D3" StoreEntitySet="AccountValueHistory">
+            <EndProperty Name="AccountValueHistory">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="UserAccount">
+              <ScalarProperty Name="Id" ColumnName="UpdateUser" />
+            </EndProperty>
+            <Condition ColumnName="UpdateUser" IsNull="false" />
+          </AssociationSetMapping>
+          <EntitySetMapping Name="AccountStatus">
+            <EntityTypeMapping TypeName="YieldDBModel.AccountStatus">
+              <MappingFragment StoreEntitySet="AccountStatus">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

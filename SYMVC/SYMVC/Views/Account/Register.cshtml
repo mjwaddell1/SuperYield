@@ -1,0 +1,66 @@
+﻿@model SYMVC.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<style>
+    .btn-custom {
+        color: whitesmoke;
+        background-color: mediumseagreen;
+        border-color: transparent; /*set the color you want here*/
+        border-radius: 20vw;
+    }
+
+        .btn-custom:hover, .btn-custom:focus, .btn-custom:active, .btn-custom.active, .open > .dropdown-toggle.btn-custom {
+            color: lightgray;
+            background-color: forestgreen;
+            border-color: transparent; /*set the color you want here*/
+        }
+</style>
+
+<div style="margin-left:3vw;margin-right:3vw">
+    <h2>@ViewBag.Title</h2>
+
+    <div style="background-color:indianred;padding:10px;color:wheat;border-radius:7px">
+        <h4>This site is in development. Super Yield is not currently accepting new investors. 
+        <br /><br />If you would like to be notified when Super Yield goes live, please use our 
+        @Html.ActionLink("Contact Us", "Create", "ContactUs", null, new { style = "color:whitesmoke" }) page.</h4>
+    </div>
+    <br />
+
+
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn-bluegrd" value="Register" />
+            </div>
+        </div>
+    }
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

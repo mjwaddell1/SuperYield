@@ -1,0 +1,21 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<div style="margin-left:3vw;margin-right:3vw">
+    <h2 class="text-danger">An error occurred while processing your request.</h2>
+
+    @if (ViewBag.ErrMsg != null)
+    {
+        <br /><h2 class="text-danger">@ViewBag.ErrMsg</h2>
+    }
+    </div>
+<br/><br/>
+<center>
+    <input type="button" class="btn btn-info" style="font-size:large;background-color:forestgreen;border-color:transparent;box-shadow: 5px 5px 2px grey" value="Login" onclick="location.href='@Url.Action("Login", "Account", routeValues: null)'" />&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" class="btn btn-info" style="font-size:large;background-color:forestgreen;border-color:transparent;box-shadow: 5px 5px 2px grey" value="Register as new User" onclick="location.href='@Url.Action("Register", "Account", routeValues: null)'" />
+</center>
+
+
